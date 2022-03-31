@@ -1,0 +1,11 @@
+var first;
+first = 5;
+var second;
+second = 2;
+var third;
+third = 3;
+var total;
+var output;
+output = "sum of numbers is: ";
+total = (first + second + third);
+console.log(output + total);
