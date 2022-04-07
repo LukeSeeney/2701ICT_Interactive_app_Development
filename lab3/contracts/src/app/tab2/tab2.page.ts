@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
+  loginAttempts:number = 0;
+
+  loginAttemptCounter()
+  {
+    this.loginAttempts++;
+  }
+  
   constructor() {}
 
 }

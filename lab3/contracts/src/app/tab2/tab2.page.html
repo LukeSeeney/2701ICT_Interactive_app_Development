@@ -27,13 +27,17 @@
 
       <ion-item>
         <ion-checkbox></ion-checkbox>
-        <ion-label>Remain logged in</ion-label>
+        <ion-label> Remain logged in</ion-label>
       </ion-item>
 
-      <ion-button routerLink = "/account" shape = "round" color = "success" size = "large">
+      <ion-button (click) = "loginAttemptCounter()" shape = "round" color = "success" size = "large">
         LOGIN
         <ion-icon name="arrow-forward-circle-outline"></ion-icon>
       </ion-button>
+
+      <ion-item>
+        {{loginAttempts}} login attempts
+      </ion-item>
     
     </ion-list>
  
