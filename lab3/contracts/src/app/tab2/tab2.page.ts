@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -7,18 +8,18 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  login()
-  {
-    
-  }
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  Username = "";
+  Password = "";
 
   loginAttempts:number = 0;
 
-  loginAttemptCounter()
-  {
+   login()
+   {
     this.loginAttempts++;
-  }
-  
-  constructor() {}
-
+    this.router.navigateByUrl('/account/' + this.Username + "/" + this.Password)
+    return this.loginAttempts
+   }
+   
 }

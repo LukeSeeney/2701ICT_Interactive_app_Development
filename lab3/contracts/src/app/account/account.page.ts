@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router,ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-account',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit() {
-  }
+  Username = "";
+  Password = "";
 
+  ngOnInit()
+   {
+     this.Username = this.route.snapshot.paramMap.get("Username");
+     this.Password = this.route.snapshot.paramMap.get("Password");
+   }
 }
