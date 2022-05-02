@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" mode = 'md'>
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Contacts
     </ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button color="secondary" (click)="addContact()">Add
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-list lines="none">
+    
+    <ion-item-sliding *ngFor="let contact of contacts;index as i">
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="delete(i)">Delete</ion-item-option>
+        <ion-item-option  (click)="edit(i)">edit</ion-item-option>
+      </ion-item-options>
+    <ion-item >
+      {{contact.firstName}},  {{contact.lastName}}
+    </ion-item>
+  </ion-item-sliding>
+  </ion-list>
 </ion-content>

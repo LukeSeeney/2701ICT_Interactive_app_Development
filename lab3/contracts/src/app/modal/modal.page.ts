@@ -17,13 +17,16 @@ export class ModalPage implements OnInit {
 
   ngOnInit() {
    
-      this.firstName = this.navParams.get('firstName');
-      this.lastName = this.navParams.get('lastName');
-      this.email = this.navParams.get('email');
-      if (this.firstName != "" || this.firstName !=undefined){
-        this.editaddbtn = 'Edit';
-      }else{
-        this.editaddbtn = 'Add';
+    this.firstName = this.navParams.get('firstName');
+    this.lastName = this.navParams.get('lastName');
+    this.email = this.navParams.get('email');
+    if (this.firstName != "" || this.firstName != undefined)
+    {
+      this.editaddbtn = 'Edit';
+    }
+    else
+    {
+      this.editaddbtn = 'Add';
     }
   }
   closemodal(){
