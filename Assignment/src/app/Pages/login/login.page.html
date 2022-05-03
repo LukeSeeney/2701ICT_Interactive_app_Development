@@ -1,0 +1,43 @@
+<ion-header translucent="true" mode = "md"></ion-header>
+
+<ion-content fullscreen="true">
+  <div class="flex-center">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title color = "success">Login</ion-card-title>
+        <ion-card-subtitle>Enter login details</ion-card-subtitle>
+        
+      </ion-card-header>
+    
+      <ion-card-content>
+
+        <ion-item lines = "none">
+          {{loginAttempts}} login attempts
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input type="Username" [(ngModel)]="Username" name="Username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)]="Password" name="Password"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-checkbox></ion-checkbox>
+          <ion-label> Remain logged in</ion-label>
+        </ion-item>
+
+        <ion-button (click) = "login()" shape = "round" color = "success" size = "full">
+          LOGIN
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        </ion-button>     
+  
+      <app-explore-container name="Login"></app-explore-container>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
