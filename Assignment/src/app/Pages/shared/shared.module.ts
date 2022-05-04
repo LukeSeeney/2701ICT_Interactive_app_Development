@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LightsComponent } from './lights/lights.component';
+import { LightComponent } from './light/light.component';
 import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
-  declarations: [LightsComponent],
+  declarations: [LightComponent],
   imports: [
     CommonModule,
     IonicModule
   ],
-  exports: [LightsComponent]
+  exports: [LightComponent]
 })
 export class SharedModule { }
