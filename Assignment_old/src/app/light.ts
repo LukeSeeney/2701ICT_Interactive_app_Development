@@ -3,3 +3,7 @@ export class Light {
     powerState: boolean;
     brightness: number;
 }
+export class Area {
+    areaName: string;
+    lights: Light[]
+}

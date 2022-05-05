@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'lightarea',
     loadChildren: () => import('./pages/lightarea/lightarea.module').then( m => m.LightareaPageModule)
+  },  {
+    path: 'scheduling',
+    loadChildren: () => import('./pages/scheduling/scheduling.module').then( m => m.SchedulingPageModule)
   },
+
 ];
 
 @NgModule({

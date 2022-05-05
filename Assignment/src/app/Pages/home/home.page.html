@@ -1,18 +1,21 @@
-<ion-header [translucent]="true" mode = 'md'>
+<ion-header mode = 'md'>
+  <ion-toolbar color = "success">
+    <ion-back-button slot ="start"></ion-back-button>
   <ion-title>Account</ion-title>
-  <ion-buttons>    
-    <ion-back-button slot = "secondary"></ion-back-button>
-  </ion-buttons>
-</ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-list>
-  <ion-item>
-    <ion-label>Username: {{Username}}</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Password: {{Password}}</ion-label>
-  </ion-item>
-</ion-list>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label>Username: {{username}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password: {{password}}</ion-label>
+      </ion-item>
+      <ion-button (click)="navtoscheduling()" color = "danger" shape = "round" size = "full"></ion-button>
+      <ion-button (click)="navtolights()" color = "warning" shape = "round" size = "full"></ion-button>
+    </ion-list>
+  </ion-card>
 </ion-content>

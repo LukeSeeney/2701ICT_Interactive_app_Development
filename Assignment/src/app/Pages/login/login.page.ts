@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
+import { HomePageModule } from '../home/home.module';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +10,20 @@ import { Router,ActivatedRoute } from '@angular/router';
 })
 export class LoginPage {
   
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private userservice: UserService, private router: Router, private route: ActivatedRoute) {}
 
-  Username = "";
-  Password = "";
+  username = "";
+  password = "";
 
   loginAttempts:number = 0;
 
    login()
    {
     this.loginAttempts++;
-    this.router.navigateByUrl(['../home/home.module'] + "/" + this.Username + "/" + this.Password)
+    this.userservice.setUserDetails(this.username, this.password)
+    if (this.userservice.getUsername() != ""){
+      this.router.navigate(['home'])
+    }
     return this.loginAttempts
    }
 

@@ -1,9 +1,18 @@
-<ion-header>
+<ion-header mode = "md">
   <ion-toolbar>
+    <ion-back-button slot ="start"></ion-back-button>
     <ion-title>lightdisplay</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor='let light of lights' >
+    <ion-card-content>
+      <ion-item>
+        <ion-label>{{light.lightName}}</ion-label>
+        <ion-label>{{light.powerState}}</ion-label>
+        <ion-label>{{light.brightness}}</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

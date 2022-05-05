@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Light } from 'src/app/light';
+import { LightStatusService } from '../shared/light-status.service';
 
 @Component({
   selector: 'app-lightdisplay',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lightdisplay.page.scss'],
 })
 export class LightdisplayPage implements OnInit {
-
-  constructor() { }
+lights = []Light
+  constructor(private lightservice:LightStatusService) { }
 
   ngOnInit() {
+    this.lights = this.lightservice.getLightsInArea(this.lightservice.areaStorage[0])
   }
 
 }
