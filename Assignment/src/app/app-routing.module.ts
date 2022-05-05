@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'scheduling',
     loadChildren: () => import('./pages/scheduling/scheduling.module').then( m => m.SchedulingPageModule)
   },
+  {
+    path: 'scheduling',
+    loadChildren: () => import('./pages/scheduling/scheduling.module').then( m => m.SchedulingPageModule)
+  },
 
 ];
 
