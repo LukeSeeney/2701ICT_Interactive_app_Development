@@ -8,11 +8,13 @@ import { LightStatusService } from '../shared/light-status.service';
   styleUrls: ['./lightdisplay.page.scss'],
 })
 export class LightdisplayPage implements OnInit {
-lights = []Light
+
+  areaName = "New Area";
+  lights = []
   constructor(private lightservice:LightStatusService) { }
 
   ngOnInit() {
-    this.lights = this.lightservice.getLightsInArea(this.lightservice.areaStorage[0])
+    this.lights.push(this.lightservice.getLightsInArea(this.areaName))
   }
 
 }

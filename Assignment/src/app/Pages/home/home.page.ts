@@ -11,8 +11,8 @@ export class HomePage implements OnInit {
 
   constructor(private userservice: UserService, private router: Router, private route: ActivatedRoute) {}
 
-  username = "";
-  password = "";
+  username:string;
+  password:string;
 
   ngOnInit()
    {

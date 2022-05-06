@@ -1,13 +1,13 @@
 <ion-header mode = "md">
-  <ion-toolbar>
+  <ion-toolbar color = "success">
     <ion-back-button slot ="start"></ion-back-button>
     <ion-title>lightdisplay</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngFor='let light of lights' >
-    <ion-card-content>
+<ion-content color = "dark">
+  <ion-card *ngFor='let light of lights' color = "success">
+    <ion-card-content color = "dark">
       <ion-item>
         <ion-label>{{light.lightName}}</ion-label>
         <ion-label>{{light.powerState}}</ion-label>
@@ -15,4 +15,7 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
+  <!-- <button ion-button (click) = "addLightsModal()">
+    <ion-icon name = "add"></ion-icon>
+  </button> -->
 </ion-content>
