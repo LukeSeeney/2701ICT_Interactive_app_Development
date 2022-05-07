@@ -26,7 +26,15 @@ const routes: Routes = [
   {
     path: 'scheduling',
     loadChildren: () => import('./pages/scheduling/scheduling.module').then( m => m.SchedulingPageModule)
+  },  {
+    path: 'add-area',
+    loadChildren: () => import('./pages/add-area/add-area.module').then( m => m.AddAreaPageModule)
   },
+  {
+    path: 'add-light',
+    loadChildren: () => import('./pages/add-light/add-light.module').then( m => m.AddLightPageModule)
+  },
+
 
 ];
 
