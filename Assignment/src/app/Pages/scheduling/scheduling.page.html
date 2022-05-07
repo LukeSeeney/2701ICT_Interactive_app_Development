@@ -1,10 +1,30 @@
 <ion-header mode = "md">
   <ion-toolbar color = "success">
     <ion-back-button slot ="start"></ion-back-button>
-    <ion-title>scheduling</ion-title>
+    <ion-title>Scheduling</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color = "dark">
-
+<ion-content [fullscreen] = "true">
+  <ion-card>
+    <ion-item color = "secondary">
+      <ion-button size = "cover" id="date"> Pick Date:
+        <ion-input value="{{ dateTimeToggle | date: 'hh:mm, dd.MMM.yyyy' }}"  class="ion-text-end">
+        </ion-input>
+        <ion-popover trigger="date" size="fixed" reference="trigger">
+          <ng-template>
+            <ion-datetime
+            presentation="time-date"
+            [(ngModel)]="dateTimeToggle"
+            locale="sl-SI"
+            (ngModelChange) = "setOnTime($event)"
+            ></ion-datetime>
+          </ng-template>
+        </ion-popover>
+      </ion-button>
+    </ion-item>
+  </ion-card>
+  <ion-item>
+    <ion-title *ngFor='let event of scheduledEvents'> event</ion-title>
+  </ion-item> 
 </ion-content>
