@@ -9,7 +9,7 @@ import { Event } from 'src/app/event';
 })
 export class SchedulingPage implements OnInit {
   dateTimeToggle= new Date().toISOString();
-  scheduledEvents = [new Event("Office", true, "2022-05-07T13:43:00+10:00"), new Event("Office", true, "2022-05-07T13:50:00+10:00")];
+  scheduledEvents = [new Event("Office", true, "2022-05-07T13:43:00+10:00"), new Event("Living room", false, "2022-05-07T13:50:00+10:00")];
 
   constructor(datechecker:DateCheckerService) {  }
 
@@ -21,6 +21,4 @@ export class SchedulingPage implements OnInit {
     this.dateTimeToggle = dateTime;
     console.log(this.dateTimeToggle)
   }
-
-
 }

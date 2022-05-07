@@ -1,7 +1,7 @@
 <ion-header mode = "md">
   <ion-toolbar color = "success">
     <ion-back-button slot ="start"></ion-back-button>
-    <ion-title>Scheduling</ion-title>
+    <ion-title>Scheduled Events</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,7 +24,29 @@
       </ion-button>
     </ion-item>
   </ion-card>
-  <ion-item>
-    <ion-title *ngFor='let event of scheduledEvents'> event</ion-title>
-  </ion-item> 
+
+  <ion-card *ngFor='let event of scheduledEvents' color = "secondary">
+    <ion-item color = "secondary">
+      <ion-title>{{event.area}}
+        <ion-label *ngIf = "event.state == true"> Will Turn On at:</ion-label>
+        <ion-label *ngIf = "event.state == false">Will Turn Off at:</ion-label>
+      </ion-title>
+      <ion-button size = "cover" id="date">
+        <ion-input value="{{ event.time | date: 'hh:mm dd.MMM.yyyy' }}"  class="ion-text-end">
+        </ion-input>
+        <ion-popover trigger="date" size="fixed" reference="trigger">
+          <ng-template>
+            <ion-datetime
+            readonly="true"
+            presentation="time-date"
+            [(ngModel)]="dateTimeToggle"
+            locale="sl-SI"
+            (ngModelChange) = "setOnTime($event)"
+            ></ion-datetime>
+          </ng-template>
+        </ion-popover>
+      </ion-button>
+      
+    </ion-item>
+  </ion-card>
 </ion-content>

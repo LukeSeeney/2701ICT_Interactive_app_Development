@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'add-light',
     loadChildren: () => import('./pages/add-light/add-light.module').then( m => m.AddLightPageModule)
   },
+  {
+    path: 'scheduling-modal',
+    loadChildren: () => import('./pages/scheduling-modal/scheduling-modal.module').then( m => m.SchedulingModalPageModule)
+  },
 
 
 ];
