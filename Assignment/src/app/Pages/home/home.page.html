@@ -6,13 +6,24 @@
 </ion-header>
 
 <ion-content color = "dark">
-  <ion-card color = "dark">
-    <ion-card-content color = "dark" mode = "ios">
-        <ion-item color = "dark">
+  <ion-card color = "secondary">
+    <ion-card-content color = "secondary" mode = "ios">
+        <ion-item color = "secondary" lines = "none" size = "full">
           <ion-label>Welcome {{username}}</ion-label>
         </ion-item>
-        <ion-button (click)="navtoscheduling()" color = "danger" shape = "round" size = "full"> Scheduling</ion-button>
-        <ion-button (click)="navtolights()" color = "warning" shape = "round" size = "full">Lights</ion-button>
+        <ion-button (click)="navToScheduling()" color = "danger" shape = "round" size = "full"> Scheduling</ion-button>
+        <ion-button (click)="navToAreas()" color = "primary" shape = "round" size = "full"> Areas</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Power Consumption</ion-label>
+      </ion-item>
+      <ion-item>
+        <img src="../../../assets/placeholder graph.png" alt="graph">
+      </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>

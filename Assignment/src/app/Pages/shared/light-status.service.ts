@@ -6,15 +6,26 @@ import { Area } from 'src/app/light';
 })
 export class LightStatusService {
 
-  areaStorage = [new Area(), new Area()]
+  areaName:string;
+  areaStorage = []
 
-  constructor() { }
+  constructor() {
+    this.areaStorage = [new Area("Office"), new Area("Living room"),new Area("Dining room"), new Area("Kitchen")]
+  }
 
   getLightsInArea(area){
     for(let areaL of this.areaStorage){
+      console.log(areaL);
       if(areaL.areaName == area ){
-        return areaL
+        return areaL.lights
       }
     }
+  }
+  getAreas(){
+    return this.areaStorage;
+  }
+
+  areaSelected(area:string){
+    this.areaName = area;
   }
 }

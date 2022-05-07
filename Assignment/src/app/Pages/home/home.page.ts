@@ -20,10 +20,10 @@ export class HomePage implements OnInit {
      this.password = this.userservice.getPassword()
    }
 
-  navtolights(){
-    this.router.navigate(["lightdisplay"])
-  }
-  navtoscheduling(){
+  navToScheduling(){
     this.router.navigate(["scheduling"])
+  }
+  navToAreas(){
+    this.router.navigate(["lightarea"])
   }
 }

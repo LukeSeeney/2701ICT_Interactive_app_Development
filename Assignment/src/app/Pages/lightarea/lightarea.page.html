@@ -1,9 +1,21 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>lightarea</ion-title>
+<ion-header mode = "md">
+  <ion-toolbar color = "success">
+    <ion-back-button slot ="start"></ion-back-button>
+    <ion-title>Areas</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content mode = "ios">
+  <ion-card *ngFor="let area of areas" size = "full" color = "secondary">
+    <ion-card-content>
 
+      <ion-item lines = "none" color = "secondary">
+        <ion-label size = "full">{{area.areaName}}</ion-label>
+        <ion-checkbox [(ngModel)] = "area.switch" (change) = "powerStateToggle($event)" checked = area.switch></ion-checkbox>
+      </ion-item>
+
+      <ion-button (click)="navToLights(area.areaName)" color = "primary" shape = "round" size = "full">Open {{area.areaName}}</ion-button>
+      
+    </ion-card-content>
+  </ion-card>
 </ion-content>

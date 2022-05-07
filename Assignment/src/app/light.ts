@@ -3,19 +3,20 @@ export class Light {
     powerState: boolean;
     brightness: number;
 
-    constructor(){
-        this.lightName = "New Light";
-        this.powerState = false;
-        this.brightness = 0;
+    constructor(lightName:string, powerState:boolean, brightness:number){
+        this.lightName = lightName;
+        this.powerState = powerState;
+        this.brightness = brightness;
     }
 }
 export class Area {
     areaName: string;
+    switch:boolean;
     lights = [];
 
-    constructor() {
-        this.areaName = "New Area";
-        this.lights = [new Light(), new Light(), new Light()];
-        
+    constructor(areaName:string) {
+        this.areaName = areaName;
+        this.switch = false;
+        this.lights = [new Light("Light 1", false, 100), new Light("Light 2", false, 100), new Light("Light 3", false, 100)];
     }
 }
