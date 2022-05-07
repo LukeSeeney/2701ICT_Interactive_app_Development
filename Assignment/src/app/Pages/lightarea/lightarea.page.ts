@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Light } from 'src/app/light';
+import { Area, Light } from 'src/app/light';
 import { LightStatusService } from '../shared/light-status.service';
 
 @Component({
@@ -18,19 +18,32 @@ export class LightareaPage implements OnInit {
   ngOnInit() {
     this.areas = this.lightservice.getAreas()
   }
+
  navToLights(areaName:string){
     this.router.navigate(["lightdisplay"])
     this.lightservice.areaSelected(areaName);
   }
-  powerStateToggle(area){
+
+  addArea(name:string){
+    this.areas.push(new Area(name));
+    this.lightservice.areaStorage = this.areas;
+
+  }
+
+  powerStateToggle(area:any){
     for(let e in this.areas){
-      console.log(e);
       if(this.areas[e] == area){
-        console.log("it worky")
-      }else{
-          return
+        for(let i in this.areas[e].lights){
+          // change power state for relevant lights in area
+          if(this.areas[e].lights[i].powerState == true){
+            this.areas[e].lights[i].powerState = false;
+          }else{
+          this.areas[e].lights[i].powerState = true;
+          }
+        }
+        // pass back power state that has now been changed
+        this.lightservice.areaStorage = this.areas;
       }
-      console.log(this.areas)
     }
   }
 }

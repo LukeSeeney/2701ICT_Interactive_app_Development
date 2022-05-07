@@ -12,12 +12,10 @@ export class LightdisplayPage implements OnInit {
   sliders = [];
   slider = document.getElementById("light.lightName");
   sliderBrightness:number;
-  areaName:string
+  areaName:string;
   lights = [];
 
-  constructor(private lightservice:LightStatusService) { 
-    this.slider
-   }
+  constructor(private lightservice:LightStatusService) {  }
 
   ngOnInit() {
     this.areaName = this.lightservice.areaName;
@@ -29,9 +27,10 @@ export class LightdisplayPage implements OnInit {
     console.log(event.target.valueAsNumber);
     console.log(this.lights);
   }
+
   ngAfterViewInit(){
    for(let light in this.lights){
-    var slider = this.lights[light].brightness
+    var slider = this.lights[light].brightness;
     this.sliders.push(slider);
    }
   }

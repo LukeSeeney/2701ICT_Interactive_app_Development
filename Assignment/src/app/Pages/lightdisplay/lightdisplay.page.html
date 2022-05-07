@@ -1,7 +1,8 @@
 <ion-header mode = "md">
   <ion-toolbar color = "success" >
     <ion-back-button slot ="start"></ion-back-button>
-    <ion-title>Lights in {{areaName}}</ion-title>
+    <ion-label>Lights in {{areaName}}</ion-label>
+    <ion-button slot = "end" color = "secondary"> Add Light</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -10,18 +11,19 @@
     <ion-card *ngFor='let light of lights' size = "full" mode = "ios" color = "secondary">
       <ion-card-content color = "secondary">
 
-        <ion-item color = "secondary" lines = "none">
+        <ion-item color = "secondary" lines = "none" size = "full">
           <ion-label>{{light.lightName}}</ion-label>
+          <ion-label position = "right" *ngIf = "light.powerState == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Off</ion-label>
+          <ion-label *ngIf = "light.powerState == true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On</ion-label>
+          <ion-checkbox [(ngModel)] = "light.powerState" checked = light.powerState position = "right"></ion-checkbox>
         </ion-item>
 
-        <ion-item color = "secondary" lines = "none">
-          <ion-checkbox [(ngModel)] = "light.powerState" checked = light.powerState></ion-checkbox>
-          <ion-label>&nbsp;{{light.powerState}}</ion-label>
-        </ion-item>
+        <ion-label>Brightness</ion-label>
 
         <ion-item color = "secondary" lines = "none">
+            
             <input id={{light.lightName}} type="range" value = "light.powerstate" [(ngModel)] = "light.brightness" size = "full"  min="1" max="100"    (change)="getSliderValue($event)" (oninput)="getSliderValue($event)"/>
-            <ion-label>{{light.brightness}}</ion-label>
+            <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;{{light.brightness}} %</ion-label>
         </ion-item>
 
       </ion-card-content>

@@ -2,6 +2,7 @@
   <ion-toolbar color = "success">
     <ion-back-button slot ="start"></ion-back-button>
     <ion-title>Areas</ion-title>
+    <ion-button slot = "end" color = "secondary"> Add Area</ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -9,9 +10,11 @@
   <ion-card *ngFor="let area of areas" size = "full" color = "secondary">
     <ion-card-content>
 
-      <ion-item lines = "none" color = "secondary">
+      <ion-item lines = "none" color = "secondary" size = "full">
         <ion-label size = "full">{{area.areaName}}</ion-label>
-        <ion-checkbox [(ngModel)] = "area.switch" (change) = "powerStateToggle($event)" checked = area.switch></ion-checkbox>
+        <ion-label *ngIf = "area.switch == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Off</ion-label>
+        <ion-label *ngIf = "area.switch == true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On</ion-label>
+        <ion-checkbox [(ngModel)] = "area.switch" (ngModelChange) = "powerStateToggle(area)" checked = area.switch (oninput)="powerStateToggle(area)"></ion-checkbox>
       </ion-item>
 
       <ion-button (click)="navToLights(area.areaName)" color = "primary" shape = "round" size = "full">Open {{area.areaName}}</ion-button>

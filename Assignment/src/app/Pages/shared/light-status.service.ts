@@ -13,9 +13,9 @@ export class LightStatusService {
     this.areaStorage = [new Area("Office"), new Area("Living room"),new Area("Dining room"), new Area("Kitchen")]
   }
 
-  getLightsInArea(area){
+  getLightsInArea(area:any){
     for(let areaL of this.areaStorage){
-      console.log(areaL);
+  //    console.log(areaL);
       if(areaL.areaName == area ){
         return areaL.lights
       }
