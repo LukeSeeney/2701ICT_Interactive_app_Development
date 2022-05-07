@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar color = "primary">
-    <ion-title>Add a new Light</ion-title>
+    <ion-title size = "full" >Add a new Light</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content size = "full">
+  <ion-card>
+
+    <ion-item color = "secondary">
+      <ion-label position="floating">Light Name:</ion-label>
+      <ion-input type = "text" [(ngModel)] = "lightName"></ion-input>
+    </ion-item>
+  </ion-card>
+
+    <ion-button (click) = "close()" size ="full" shape = "round">Create</ion-button>
 
 </ion-content>

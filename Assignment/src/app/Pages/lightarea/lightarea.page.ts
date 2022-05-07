@@ -17,18 +17,18 @@ export class LightareaPage implements OnInit {
 
   constructor(public modalctrl:ModalController, private lightservice:LightStatusService, private router: Router, private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    this.areas = this.lightservice.getAreas()
-  }
-
   async showModal() {  
     const modal = await this.modalctrl.create({  
       component: AddAreaPage,
-      breakpoints: [0, 0.3, 0.5],
-      initialBreakpoint: 0.5
+      breakpoints: [0, 0.3],
+      initialBreakpoint: 0.3
     });  
     return await modal.present();  
   }  
+
+  ngOnInit() {
+    this.areas = this.lightservice.getAreas()
+  }
 
  navToLights(areaName:string){
     this.router.navigate(["lightdisplay"])
@@ -38,7 +38,6 @@ export class LightareaPage implements OnInit {
   addArea(name:string){
     this.areas.push(new Area(name));
     this.lightservice.areaStorage = this.areas;
-
   }
 
   powerStateToggle(area:any,state:boolean){

@@ -4,6 +4,15 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content size = "full">
+  <ion-card>
+
+    <ion-item color = "secondary">
+      <ion-label position="floating">Area Name:</ion-label>
+      <ion-input type = "text" [(ngModel)] = "areaName"></ion-input>
+    </ion-item>
+  </ion-card>
+
+    <ion-button (click) = "close()" size ="full" shape = "round">Create</ion-button>
 
 </ion-content>

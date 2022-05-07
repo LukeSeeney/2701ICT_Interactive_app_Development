@@ -5,7 +5,6 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { LoginPageModule } from '../login/login.module';
-import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -14,7 +13,6 @@ import { SharedModule } from '../shared/shared.module';
     IonicModule,
     HomePageRoutingModule,
     LoginPageModule,
-    SharedModule
   ],
   declarations: [HomePage]
 })

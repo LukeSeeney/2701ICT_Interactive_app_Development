@@ -10,27 +10,18 @@
   <ion-content>
     <ion-card *ngFor='let light of lights' size = "full" mode = "ios" color = "secondary">
       <ion-card-content color = "secondary">
-
         <ion-item color = "secondary" lines = "none" size = "full">
           <ion-label>{{light.lightName}}</ion-label>
           <ion-label position = "right" *ngIf = "light.powerState == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Off</ion-label>
           <ion-label *ngIf = "light.powerState == true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On</ion-label>
           <ion-checkbox [(ngModel)] = "light.powerState" checked = light.powerState position = "right"></ion-checkbox>
         </ion-item>
-
         <ion-label>Brightness</ion-label>
-
         <ion-item color = "secondary" lines = "none">
-            
             <input id={{light.lightName}} type="range" value = "light.powerstate" [(ngModel)] = "light.brightness" size = "full"  min="1" max="100"    (change)="getSliderValue($event)" (oninput)="getSliderValue($event)"/>
             <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;{{light.brightness}} %</ion-label>
         </ion-item>
-
       </ion-card-content>
     </ion-card>
-    <!-- <button ion-button (click) = "addLightsModal()">
-      <ion-icon name = "add"></ion-icon>
-    </button> -->
   </ion-content>
-
 </div>
