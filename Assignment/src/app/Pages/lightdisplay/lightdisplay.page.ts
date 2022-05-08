@@ -11,14 +11,18 @@ import { AddLightPage } from '../add-light/add-light.page';
 })
 export class LightdisplayPage implements OnInit {
 
+  // slider value storage
   sliders = [];
   slider = document.getElementById("light.lightName");
   sliderBrightness:number;
+  // imported area
   areaName:string;
+  // lights in inmported area
   lights = [];
 
   constructor(public modalctrl:ModalController, private lightservice:LightStatusService) {  }
 
+  // show modal to add a light
   async showModal() {  
     const modal = await this.modalctrl.create({  
       component: AddLightPage,
@@ -28,17 +32,20 @@ export class LightdisplayPage implements OnInit {
     return await modal.present();  
   }  
 
+  // import area name and lights contained in it from light service
   ngOnInit() {
     this.areaName = this.lightservice.areaName;
     this.lights = this.lightservice.getLightsInArea(this.areaName);
   }
 
+  // retrieve value of individual sliders
   getSliderValue(event:any = 0){
     this.sliderBrightness = event.target.valueAsNumber;
     console.log(event.target.valueAsNumber);
     console.log(this.lights);
   }
 
+  // set brightness of lights from its assigned slider value
   ngAfterViewInit(){
    for(let light in this.lights){
     var slider = this.lights[light].brightness;

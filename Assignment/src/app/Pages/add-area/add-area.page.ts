@@ -16,6 +16,8 @@ export class AddAreaPage implements OnInit {
 
   ngOnInit() {  
   }  
+
+  // upon pressing create button, push a new area with name in input field
   close() { 
     if(this.areaName == ""){ 
       console.log("butts")

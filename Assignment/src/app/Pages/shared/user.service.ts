@@ -5,17 +5,21 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
+  // username / password input
   username:string;
   password:string;
 
+  // user storage
   users = [{username:"asd", password:"asd"}, {username:"admin", password:"admin"}];
   constructor() { }
 
-  setLoginInput(username, password){
+  // record login input
+  setLoginInput(username:string, password:string){
     this.username = username;
     this.password = password;
   }
 
+  // verify login input
   verify(){
     for(let user of this.users){
       if(this.username == user.username && this.password == user.password){
@@ -25,10 +29,11 @@ export class UserService {
     return false
     
   }
+  // send current username
   getUsername(){
     return this.username
   }
-
+  // send current password
   getPassword(){
     return this.password
   }

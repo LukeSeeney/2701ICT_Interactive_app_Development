@@ -15,11 +15,13 @@ import { LightStatusService } from '../shared/light-status.service';
 
 export class LightareaPage implements OnInit {
 
+  // areas in storage
   areas = []
 
   constructor(public modalctrl:ModalController, private lightservice:LightStatusService, private router: Router, 
               private route: ActivatedRoute, private dateCheckerService:DateCheckerService) { }
 
+  // show modal to add an area
   async showModal(){  
     const modal = await this.modalctrl.create({  
       component: AddAreaPage,
@@ -29,6 +31,7 @@ export class LightareaPage implements OnInit {
     return await modal.present();  
   }  
 
+  // show modal to schedule an area to turn on/off
   async showScheduleModal(area:string){
     const modal = await this.modalctrl.create({  
       component: SchedulingModalPage,
@@ -39,20 +42,24 @@ export class LightareaPage implements OnInit {
     return await modal.present();  
   }  
 
+  // retrieve areas from light service
   ngOnInit() {
     this.areas = this.lightservice.getAreas()
   }
 
- navToLights(areaName:string){
+  // navigate to lights page, pass over area selected
+  navToLights(areaName:string){
     this.router.navigate(["lightdisplay"])
     this.lightservice.areaSelected(areaName);
   }
 
+  // push new area to storage
   addArea(name:string){
     this.areas.push(new Area(name));
     this.lightservice.areaStorage = this.areas;
   }
 
+  // toggle powerstate of light input
   powerStateToggle(area:any,state:boolean){
     for(let e in this.areas){
       if(this.areas[e] == area){

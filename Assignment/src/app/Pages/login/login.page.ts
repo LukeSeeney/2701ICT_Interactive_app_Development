@@ -12,11 +12,14 @@ export class LoginPage {
   
   constructor(private userservice: UserService, private router: Router, private route: ActivatedRoute) {}
 
+  // username and password inputs
   username:string;
   password:string;
 
+  // login attempt counter
   loginAttempts:number = 0;
 
+  // set login input and navigate to home page if verified by user service
    login()
    {
     this.loginAttempts++;

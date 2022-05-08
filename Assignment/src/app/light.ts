@@ -1,6 +1,9 @@
 export class Light {
+    // name of light
     lightName: string;
+    // on / off state of light
     powerState: boolean;
+    // light brightness
     brightness: number;
 
     constructor(lightName:string, powerState:boolean, brightness:number){
@@ -9,9 +12,13 @@ export class Light {
         this.brightness = brightness;
     }
 }
+// area that has lights in it
 export class Area {
+    // name of area
     areaName: string;
+    // switch variable to turn all lights in the area on or off
     switch:boolean;
+    // lights stored in the area
     lights = [];
 
     constructor(areaName:string) {

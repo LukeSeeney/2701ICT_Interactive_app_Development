@@ -14,15 +14,18 @@ export class HomePage implements OnInit {
   username:string;
   password:string;
 
+  // import username and password from user service
   ngOnInit()
    {
      this.username = this.userservice.getUsername();
      this.password = this.userservice.getPassword()
    }
 
+  // navigate to scheduling
   navToScheduling(){
     this.router.navigate(["scheduling"])
   }
+  // navigate to areas
   navToAreas(){
     this.router.navigate(["lightarea"])
   }

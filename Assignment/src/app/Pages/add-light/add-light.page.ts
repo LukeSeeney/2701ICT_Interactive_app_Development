@@ -12,14 +12,17 @@ export class AddLightPage implements OnInit {
 
   constructor(public modalctrl: ModalController, private lightservice:LightStatusService) { }
 
+  // variables to import the area being adited
   lightName:string 
   areaName:string = this.lightservice.areaName;
   lights = [];
 
+  // import area assigned
   ngOnInit() {
     this.lights = this.lightservice.getLightsInArea(this.areaName);
   }
 
+  // upon pressing create button, close modal and add light with name input
   close() { 
     if(this.lightName == ""){ 
       console.log("butts")
