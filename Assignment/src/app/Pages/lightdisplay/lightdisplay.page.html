@@ -18,7 +18,7 @@
         </ion-item>
         <ion-label>Brightness</ion-label>
         <ion-item color = "secondary" lines = "none">
-            <input id={{light.lightName}} type="range" value = "light.powerstate" [(ngModel)] = "light.brightness" size = "full"  min="1" max="100"    (change)="getSliderValue($event)" (oninput)="getSliderValue($event)"/>
+            <input id={{light.lightName}} type="range" value = "light.powerstate" [(ngModel)] = "light.brightness" size = "full"  min="1" max="100" (change)="getSliderValue($event)" (oninput)="getSliderValue($event)"/>
             <ion-label>&nbsp;&nbsp;&nbsp;&nbsp;{{light.brightness}} %</ion-label>
         </ion-item>
       </ion-card-content>

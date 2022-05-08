@@ -1,9 +1,29 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>schedulingModal</ion-title>
+  <ion-toolbar color = "primary">
+    <ion-title size = "cover">Schedule {{this.areaName}} to turn on/off</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen] = "true">
+  <ion-card>
+    <ion-item color = "secondary">
+      <ion-button size = "cover" id="date"> Pick Date:
+        <ion-input value="{{ dateTimeToggle | date: 'hh:mm, dd.MMM.yyyy' }}"  class="ion-text-end">
+        </ion-input>
+        <ion-popover trigger="date" size="fixed" reference="trigger">
+          <ng-template>
+            <ion-datetime
+            presentation="time-date"
+            [(ngModel)]="dateTimeToggle"
+            locale="sl-SI"
+            (ngModelChange) = "setOnTime($event)"
+            ></ion-datetime>
+          </ng-template>
+        </ion-popover>
+      </ion-button>
+    </ion-item>
+    <ion-checkbox [(ngModel)] = "state" checked = state position = "center"></ion-checkbox>
+  </ion-card>
+  <ion-button (click) = "close()" size ="full" shape = "round">Schedule</ion-button>
 </ion-content>
+

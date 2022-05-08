@@ -3,6 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Area, Light } from 'src/app/light';
 import { AddAreaPage } from '../add-area/add-area.page';
+import { SchedulingModalPage } from '../scheduling-modal/scheduling-modal.page';
+import { DateCheckerService } from '../shared/date-checker.service';
 import { LightStatusService } from '../shared/light-status.service';
 
 @Component({
@@ -15,14 +17,25 @@ export class LightareaPage implements OnInit {
 
   areas = []
 
-  constructor(public modalctrl:ModalController, private lightservice:LightStatusService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public modalctrl:ModalController, private lightservice:LightStatusService, private router: Router, 
+              private route: ActivatedRoute, private dateCheckerService:DateCheckerService) { }
 
-  async showModal() {  
+  async showModal(){  
     const modal = await this.modalctrl.create({  
       component: AddAreaPage,
-      breakpoints: [0, 0.3],
-      initialBreakpoint: 0.3
+      breakpoints: [0, 0.5],
+      initialBreakpoint: 0.5
     });  
+    return await modal.present();  
+  }  
+
+  async showScheduleModal(area:string){
+    const modal = await this.modalctrl.create({  
+      component: SchedulingModalPage,
+      breakpoints: [0, 0.9],
+      initialBreakpoint: 0.9
+    });  
+    this.dateCheckerService.areaSelected(area)
     return await modal.present();  
   }  
 

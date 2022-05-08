@@ -22,7 +22,7 @@ export class LightdisplayPage implements OnInit {
   async showModal() {  
     const modal = await this.modalctrl.create({  
       component: AddLightPage,
-      breakpoints: [0, 0.3, 0.5],
+      breakpoints: [0, 0.5],
       initialBreakpoint: 0.5
     });  
     return await modal.present();  
