@@ -1,0 +1,15 @@
+data ${i} published ${i} and half seconds after
+observer 1 subscribes 1 second after
+observer 1 recieved data: ${data}
+data ${i} published ${i} and half seconds after
+observer 2 subscribes 2 second after
+observer 1 recieved data: ${data}
+observer 2 recieved data: ${data}
+data ${i} published ${i} and half seconds after
+observer 1 recieved data: ${data}
+observer 2 recieved data: ${data}
+data ${i} published ${i} and half seconds after
+observer 1 recieved data: ${data}
+observer 2 recieved data: ${data}
+data ${i} published ${i} and half seconds after
+
