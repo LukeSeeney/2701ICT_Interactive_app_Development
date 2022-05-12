@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
+import { Tab2Page } from '../tab2/tab2.page';
+import { observable } from 'rxjs';
 
 
 @Component({
@@ -9,14 +11,21 @@ import { Router,ActivatedRoute } from '@angular/router';
 })
 export class AccountPage implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute, public tab2:Tab2Page) {}
 
   Username = "";
   Password = "";
+  loginDetails:any;
 
-  ngOnInit()
+  ionViewDidLoad()
    {
-     this.Username = this.route.snapshot.paramMap.get("Username");
-     this.Password = this.route.snapshot.paramMap.get("Password");
-   }
+    this.loginDetails = this.tab2.loginObservable.subscribe((data:any) => 
+    console.log(data)
+    // this.Username = data.username,
+    // this.Password = data.password
+   )};
+
+  ngOnInit(){
+
+  }
 }

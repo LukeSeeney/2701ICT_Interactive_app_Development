@@ -1,7 +1,0 @@
-{
-  "name": "contracts",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
