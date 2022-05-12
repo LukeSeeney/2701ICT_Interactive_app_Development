@@ -1,0 +1,7 @@
+{
+  "name": "w6",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
