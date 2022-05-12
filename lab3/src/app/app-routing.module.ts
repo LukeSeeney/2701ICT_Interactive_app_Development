@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'account',
+    path: 'account/:username/:password',
     loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
   },
   {

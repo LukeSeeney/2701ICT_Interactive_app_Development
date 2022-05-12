@@ -15,14 +15,14 @@ const subject = new Subject();
 for(let i=0; i<5; i++){
     setTimeout(() => {
         subject.publish("data" + i)
-        console.log('data ${i} published ${i} and half seconds after')
+        console.log(`data ${i} published ${i} and half seconds after`)
     }, 500 + 1000 * i);
 }
 
 // given 3 observers
-const observer1 = (data) => console.log('observer 1 recieved data: ${data}');
-const observer2 = (data) => console.log('observer 2 recieved data: ${data}');
-const observer3 = (data) => console.log('observer 3 recieved data: ${data}');
+const observer1 = (data) => console.log(`observer 1 recieved data: ${data}`);
+const observer2 = (data) => console.log(`observer 2 recieved data: ${data}`);
+const observer3 = (data) => console.log(`observer 3 recieved data: ${data}`);
 
 // observer 1 and 2 subscribe subject 1 and 2 seconds after, respectively
 setTimeout(() => {
