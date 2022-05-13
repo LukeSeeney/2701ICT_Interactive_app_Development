@@ -9,4 +9,11 @@ export class Tab3Page {
 
   constructor() {}
 
+  reminder= new Date().toISOString();
+
+  setOnTime(dateTime:string){
+    console.log(dateTime)
+    this.reminder = dateTime;
+    console.log(this.reminder)
+  }
 }
