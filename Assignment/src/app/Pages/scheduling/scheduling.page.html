@@ -13,7 +13,7 @@
         <ion-label *ngIf = "event.state == false">Will Turn Off at:</ion-label>
       </ion-title>
       <ion-button size = "cover" id="date">
-        <ion-input value="{{ event.time | date: 'hh:mm dd.MMM.yyyy' }}"  class="ion-text-end">
+        <ion-input value="{{ event.time | date: 'hh:mm dd.MMM.yyyy' }}">
         </ion-input>
         <ion-popover trigger="date" size="fixed" reference="trigger">
           <ng-template>
@@ -21,7 +21,6 @@
             readonly="true"
             presentation="time-date"
             [(ngModel)]="dateTimeToggle"
-            locale="sl-SI"
             (ngModelChange) = "setOnTime($event)"
             ></ion-datetime>
           </ng-template>
