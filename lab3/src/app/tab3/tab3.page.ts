@@ -10,7 +10,7 @@ import { StorageService } from '../storage.service';
 export class Tab3Page {
 
   setting:any
-
+  
   constructor(private storage: Storage, private storageService:StorageService) {
     this.storageService.get("settings").then((val) => {
       console.log(val)

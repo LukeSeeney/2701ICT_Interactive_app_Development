@@ -17,5 +17,6 @@ export class AppComponent {
     if (await this.storage.get("settings") == null){
       await this.storage.set("settings",{name:"Bob", showNotif:true, reminder:new Date().toISOString()})
     }
+
   }
 }
