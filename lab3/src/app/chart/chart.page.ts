@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
-
+import Chart from 'chart.js/auto';
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.page.html',
@@ -22,8 +21,7 @@ export class ChartPage implements OnInit {
           data: [180, 160, 150, 120, 80, 65, 77, 92],
           }]
           },
-        options: options
     })
+    this.chart.update()
   }
-
 }
