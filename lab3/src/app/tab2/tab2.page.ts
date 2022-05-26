@@ -25,6 +25,14 @@ export class Tab2Page implements OnInit{
     this.loginAttempts++;
     this.router.navigateByUrl('/account/' + this.username + "/" + this.password)
    }
+   map()
+   {
+    this.router.navigate(['map'])
+   }
+   chart()
+   {
+    this.router.navigate(['chart'])
+   }
  
   ngOnInit(){
   
