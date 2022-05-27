@@ -16,7 +16,6 @@ export class MapPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('ngOnInit MapPage');
     let latLng = new google.maps.LatLng(-27.9628,153.3814);
     let mapOptions = {
     center: latLng,
