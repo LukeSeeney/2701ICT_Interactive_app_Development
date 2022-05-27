@@ -34,8 +34,7 @@
       </ion-button>
       <ion-button size = "full" (click) = clearSettings()>clear settings</ion-button>
     <ion-item>
-      <ion-iput></ion-iput>
+      <ion-button #fileInput type="file" accept="image/*" (change)="imageSelected(fileInput.files)" multiple>add image</ion-button>
     </ion-item>
     </ion-list>
 </ion-content>
-
