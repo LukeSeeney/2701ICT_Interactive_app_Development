@@ -8,6 +8,7 @@
 
 <div class = "flex-center">
   <ion-content>
+    <ion-title *ngIf="lights.length == 0" size = "full" class="ion-no-padding"> No lights to display</ion-title>
     <ion-card *ngFor='let light of lights' size = "full" mode = "ios" color = "secondary">
       <ion-card-content color = "secondary">
         <ion-item color = "secondary" lines = "none" size = "full">

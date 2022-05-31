@@ -6,27 +6,17 @@
 </ion-header>
 
 <ion-content [fullscreen] = "true">
+  <ion-title *ngIf="scheduledEvents.length == 0" size = "full" class="ion-no-padding"> Nothing Scheduled</ion-title>
   <ion-card *ngFor='let event of scheduledEvents' color = "secondary">
-    <ion-item color = "secondary">
-      <ion-title>{{event.area}}
-        <ion-label *ngIf = "event.state == true"> Will Turn On at:</ion-label>
-        <ion-label *ngIf = "event.state == false">Will Turn Off at:</ion-label>
-      </ion-title>
-      <ion-button size = "cover" id="date">
-        <ion-input value="{{ event.time | date: 'hh:mm dd.MMM.yyyy' }}">
-        </ion-input>
-        <ion-popover trigger="date" size="fixed" reference="trigger">
-          <ng-template>
-            <ion-datetime
-            readonly="true"
-            presentation="time-date"
-            [(ngModel)]="dateTimeToggle"
-            (ngModelChange) = "setOnTime($event)"
-            ></ion-datetime>
-          </ng-template>
-        </ion-popover>
-      </ion-button>
-      
+    
+    <ion-item color = "secondary" lines = "none">
+      <ion-label class="ion-text-center" *ngIf = "event.state == true">{{event.area}} Will Turn On at:</ion-label>
+      <ion-label class="ion-text-center" *ngIf = "event.state == false">{{event.area}} Will Turn Off at:</ion-label>
     </ion-item>
+
+    <ion-item color = "secondary" lines = "none">
+      <ion-label class="ion-text-center">{{ event.time | date: 'hh:mm dd.MMM.yyyy' }}</ion-label>
+    </ion-item>
+
   </ion-card>
 </ion-content>

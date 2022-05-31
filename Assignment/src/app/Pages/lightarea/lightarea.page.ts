@@ -35,8 +35,8 @@ export class LightareaPage implements OnInit {
   async showScheduleModal(area:string){
     const modal = await this.modalctrl.create({  
       component: SchedulingModalPage,
-      breakpoints: [0, 0.9],
-      initialBreakpoint: 0.9
+      breakpoints: [0, 0.8],
+      initialBreakpoint: 0.8
     });  
     this.dateCheckerService.areaSelected(area)
     return await modal.present();  

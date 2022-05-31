@@ -7,6 +7,7 @@
 </ion-header>
 
 <ion-content mode = "ios">
+  <ion-title *ngIf="areas.length == 0" size = "full" class="ion-no-padding"> No Areas to display</ion-title>
   <ion-card *ngFor="let area of areas" size = "full" color = "secondary">
     <ion-card-content>
       <ion-item lines = "none" color = "secondary" size = "full">

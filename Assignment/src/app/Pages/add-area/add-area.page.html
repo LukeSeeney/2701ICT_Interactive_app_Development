@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color = "primary">
-    <ion-title size = "full">Add a new Area</ion-title>
+    <ion-title size = "full" class="ion-no-padding">Add a new Area</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,6 +13,7 @@
     </ion-item>
   </ion-card>
 
-    <ion-button (click) = "close()" size ="full" shape = "round">Create</ion-button>
+    <ion-button *ngIf = "areaName == null" color = "secondary" size ="full" shape = "round">Create</ion-button>
+    <ion-button *ngIf = "areaName != null" (click) = "close()" size ="full" shape = "round">Create</ion-button>
 
 </ion-content>

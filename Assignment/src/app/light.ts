@@ -5,11 +5,14 @@ export class Light {
     powerState: boolean;
     // light brightness
     brightness: number;
+    // light wattage
+    wattage:number;
 
-    constructor(lightName:string, powerState:boolean, brightness:number){
+    constructor(lightName:string, powerState:boolean, brightness:number, wattage:number){
         this.lightName = lightName;
         this.powerState = powerState;
         this.brightness = brightness;
+        this.wattage = wattage
     }
 }
 // area that has lights in it
@@ -24,6 +27,6 @@ export class Area {
     constructor(areaName:string) {
         this.areaName = areaName;
         this.switch = false;
-        this.lights = [new Light("Light 1", false, 100), new Light("Light 2", false, 100), new Light("Light 3", false, 100)];
+        this.lights = [];
     }
 }

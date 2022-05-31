@@ -15,11 +15,11 @@ export class SchedulingModalPage implements OnInit {
   // date and time of schedule
   dateTimeToggle= new Date().toISOString();
    // scheduled event storage
-  scheduledEvents = [new Event("Dining room", true, "2022-05-07T13:43:00+10:00"), new Event("Kitchen", false, "2022-05-07T13:50:00+10:00")];
+  scheduledEvents = [];
   // event target from modal trigger button
   areaName:string
   // state to set area to
-  state:boolean
+  state = false;
   constructor(public modalctrl: ModalController, private dateChecker:DateCheckerService) {  }
 
   // retrieve event target from modal trigger button
@@ -37,7 +37,6 @@ export class SchedulingModalPage implements OnInit {
   // push events scheduled to scheduling page storage
   close() { 
      this.scheduledEvents.push(new Event(this.areaName, this.state ,this.dateTimeToggle))
-     console.log(this.scheduledEvents);
      for(let i in this.scheduledEvents){
        this.dateChecker.scheduledEvents.push(this.scheduledEvents[i])
      }

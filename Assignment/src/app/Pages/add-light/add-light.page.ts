@@ -13,7 +13,8 @@ export class AddLightPage implements OnInit {
   constructor(public modalctrl: ModalController, private lightservice:LightStatusService) { }
 
   // variables to import the area being adited
-  lightName:string 
+  lightName:string
+  lightWattage:number
   areaName:string = this.lightservice.areaName;
   lights = [];
 
@@ -30,7 +31,7 @@ export class AddLightPage implements OnInit {
     }
     for(let areaL of this.lightservice.areaStorage){
           if(areaL.areaName == this.areaName ){
-            this.lights.push(new Light(this.lightName, false, 100));
+            this.lights.push(new Light(this.lightName, false, 100, this.lightWattage));
           }
         }
     console.log(this.lights)

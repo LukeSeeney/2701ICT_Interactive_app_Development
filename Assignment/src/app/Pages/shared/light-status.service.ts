@@ -12,7 +12,7 @@ export class LightStatusService {
 
   // setting some starter data when initialised
   constructor() {
-    this.areaStorage = [new Area("Office"), new Area("Living room"),new Area("Dining room"), new Area("Kitchen")]
+    this.areaStorage = []
   }
 
   // retrieve lights in an area when given an area name

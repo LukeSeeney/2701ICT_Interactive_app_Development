@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color = "primary">
-    <ion-title size = "full" >Add a new Light</ion-title>
+    <ion-title size = "full" class="ion-no-padding">Add a new Light</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +12,13 @@
       <ion-input type = "text" [(ngModel)] = "lightName"></ion-input>
     </ion-item>
   </ion-card>
-
-    <ion-button (click) = "close()" size ="full" shape = "round">Create</ion-button>
+  <ion-card>
+    <ion-item color = "secondary">
+      <ion-label position="floating">Wattage:</ion-label>
+      <ion-input type = "number" [(ngModel)] = "lightWattage"></ion-input>
+    </ion-item>
+  </ion-card>
+    <ion-button *ngIf = "lightName == null || lightWattage == null" color = "secondary" size ="full" shape = "round">Create</ion-button>
+    <ion-button *ngIf = "lightName != null && lightWattage != null" (click) = "close()" size ="full" shape = "round">Create</ion-button>
 
 </ion-content>

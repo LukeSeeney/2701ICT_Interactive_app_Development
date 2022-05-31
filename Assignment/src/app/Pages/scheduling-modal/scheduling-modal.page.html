@@ -1,12 +1,13 @@
 <ion-header>
   <ion-toolbar color = "primary">
-    <ion-title size = "cover">Schedule {{this.areaName}} to turn on/off</ion-title>
+    <ion-title *ngIf = "state == true" size = "cover" class="ion-no-padding">Schedule {{this.areaName}} On</ion-title>
+    <ion-title *ngIf = "state == false" size = "cover" class="ion-no-padding">Schedule {{this.areaName}} Off</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen] = "true">
   <ion-card>
-    <ion-item color = "secondary">
+    <ion-item color = "secondary" lines = "none">
       <ion-button size = "cover" id="date"> Pick Date:
         <ion-input value="{{ dateTimeToggle | date: 'hh:mm, dd.MMM.yyyy' }}">
         </ion-input>
@@ -21,7 +22,12 @@
         </ion-popover>
       </ion-button>
     </ion-item>
-    <ion-checkbox [(ngModel)] = "state" checked = state position = "center"></ion-checkbox>
+    <ion-item color = "secondary">
+      <ion-label position = "right">State: </ion-label>
+      <ion-label *ngIf = "state == false">&nbsp; Off</ion-label>
+      <ion-label *ngIf = "state == true">&nbsp; On</ion-label>
+      <ion-checkbox size = "full" [(ngModel)] = "state" checked = state position = "center"></ion-checkbox>
+    </ion-item>
   </ion-card>
   <ion-button (click) = "close()" size ="full" shape = "round">Schedule</ion-button>
 </ion-content>
