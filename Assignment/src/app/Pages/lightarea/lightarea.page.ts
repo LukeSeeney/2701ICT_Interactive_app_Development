@@ -6,6 +6,7 @@ import { AddAreaPage } from '../add-area/add-area.page';
 import { SchedulingModalPage } from '../scheduling-modal/scheduling-modal.page';
 import { DateCheckerService } from '../shared/date-checker.service';
 import { LightStatusService } from '../shared/light-status.service';
+import { StorageService } from '../shared/storage.service';
 
 @Component({
   selector: 'app-lightarea',
@@ -19,7 +20,7 @@ export class LightareaPage implements OnInit {
   areas = []
 
   constructor(public modalctrl:ModalController, private lightservice:LightStatusService, private router: Router, 
-              private route: ActivatedRoute, private dateCheckerService:DateCheckerService) { }
+  private route: ActivatedRoute, private dateCheckerService:DateCheckerService, private storage: StorageService) { }
 
   // show modal to add an area
   async showModal(){  
@@ -57,6 +58,7 @@ export class LightareaPage implements OnInit {
   addArea(name:string){
     this.areas.push(new Area(name));
     this.lightservice.areaStorage = this.areas;
+
   }
 
   // toggle powerstate of light input

@@ -5,6 +5,10 @@ import { Area } from 'src/app/light';
   providedIn: 'root'
 })
 export class LightStatusService {
+  // user data for saving upon data changing
+  username:string;
+  password:string;
+  userData:any;
   // area selected
   areaName:string;
   // all areas stored

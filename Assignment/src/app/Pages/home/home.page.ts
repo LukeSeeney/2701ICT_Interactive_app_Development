@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LightStatusService } from '../shared/light-status.service';
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -9,16 +10,22 @@ import { UserService } from '../shared/user.service';
 })
 export class HomePage implements OnInit {
 
-  constructor(private userservice: UserService, private router: Router, private route: ActivatedRoute) {}
-
+  // saved user data
   username:string;
   password:string;
+  userData:any;
 
+  constructor(private userservice: UserService, private lightService: LightStatusService,
+              private router: Router, private route: ActivatedRoute) {}
+  
   // import username and password from user service
   ngOnInit()
    {
-     this.username = this.userservice.getUsername();
-     this.password = this.userservice.getPassword()
+    this.username = this.userservice.getUsername();
+    this.password = this.userservice.getPassword();
+    this.userData = this.userservice.getUserData();
+    this.lightService.areaStorage = this.userData;
+    // console.log(this.lightService.areaStorage)
    }
 
   // navigate to scheduling

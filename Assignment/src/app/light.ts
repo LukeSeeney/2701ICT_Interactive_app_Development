@@ -12,7 +12,7 @@ export class Light {
         this.lightName = lightName;
         this.powerState = powerState;
         this.brightness = brightness;
-        this.wattage = wattage
+        this.wattage = wattage;
     }
 }
 // area that has lights in it

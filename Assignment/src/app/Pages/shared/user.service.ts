@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,17 @@ export class UserService {
   username:string;
   password:string;
 
+  // user data storage
+  userData:any;
+
   // user storage
-  users = [{username:"asd", password:"asd"}, {username:"admin", password:"admin"}];
-  constructor() { }
+  users:any;
+  constructor(private storageService:StorageService) { 
+    this.storageService.get("users").then((val) => {
+      this.users = val;
+      // console.log(this.users);
+    });
+  }
 
   // record login input
   setLoginInput(username:string, password:string){
@@ -23,19 +32,22 @@ export class UserService {
   verify(){
     for(let user of this.users){
       if(this.username == user.username && this.password == user.password){
-        return true
+        this.userData = user.areas;
+        return true;
       }
     } 
-    return false
+    return false;
     
   }
   // send current username
   getUsername(){
-    return this.username
+    return this.username;
   }
   // send current password
   getPassword(){
-    return this.password
+    return this.password;
   }
-
+  getUserData(){
+    return this.userData;
+  }
 }

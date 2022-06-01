@@ -47,9 +47,9 @@ export class LightdisplayPage implements OnInit {
 
   // set brightness of lights from its assigned slider value
   ngAfterViewInit(){
-   for(let light in this.lights){
+    for(let light in this.lights){
     var slider = this.lights[light].brightness;
     this.sliders.push(slider);
-   }
+    }
   }
 }

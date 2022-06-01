@@ -25,6 +25,7 @@ export class LoginPage {
     this.loginAttempts++;
     this.userservice.setLoginInput(this.username, this.password)
     if(this.userservice.verify()){
+      
       this.router.navigate(['home'])
     }
     return this.loginAttempts

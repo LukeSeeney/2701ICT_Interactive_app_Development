@@ -26,7 +26,6 @@ export class AddLightPage implements OnInit {
   // upon pressing create button, close modal and add light with name input
   close() { 
     if(this.lightName == ""){ 
-      console.log("butts")
       this.modalctrl.dismiss(); 
     }
     for(let areaL of this.lightservice.areaStorage){
