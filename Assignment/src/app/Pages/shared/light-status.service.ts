@@ -37,4 +37,19 @@ export class LightStatusService {
   areaSelected(area:string){
     this.areaName = area;
   }
+
+  updateAreas(areas:any){
+    
+    // this.userData = user.areas;
+  }
+
+  updateLights(areaName:string, lights:any){
+    for(let areas of this.areaStorage){
+      if(areaName == areas.areaName){
+        areas.lights = lights
+        // console.log(this.areaStorage)
+      }
+    } 
+  }
 }
+

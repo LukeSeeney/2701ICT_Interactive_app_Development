@@ -37,17 +37,31 @@ export class UserService {
       }
     } 
     return false;
-    
   }
+
+  updateUser(areaStorage:any){
+    for(let user of this.users){
+      if(this.username == user.username && this.password == user.password){
+        user.areas = areaStorage;
+      }
+    }
+    console.log("stuff happened")
+    this.storageService.store("users", this.users)
+  }
+
   // send current username
   getUsername(){
     return this.username;
   }
+
   // send current password
   getPassword(){
     return this.password;
   }
+
+  // send current user's data
   getUserData(){
     return this.userData;
   }
+  
 }

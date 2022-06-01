@@ -3,6 +3,7 @@ import { Light } from 'src/app/light';
 import { LightStatusService } from '../shared/light-status.service';
 import { ModalController } from '@ionic/angular';
 import { AddLightPage } from '../add-light/add-light.page';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-lightdisplay',
@@ -20,7 +21,7 @@ export class LightdisplayPage implements OnInit {
   // lights in inmported area
   lights = [];
 
-  constructor(public modalctrl:ModalController, private lightservice:LightStatusService) {  }
+  constructor(public modalctrl:ModalController, private lightservice:LightStatusService, private userService: UserService) {  }
 
   // show modal to add a light
   async showModal() {  
@@ -38,11 +39,17 @@ export class LightdisplayPage implements OnInit {
     this.lights = this.lightservice.getLightsInArea(this.areaName);
   }
 
+  checkboxEvent(){
+    this.lightservice.updateLights(this.areaName, this.lights)
+    this.userService.updateUser(this.lightservice.areaStorage)
+  }
   // retrieve value of individual sliders
   getSliderValue(event:any = 0){
     this.sliderBrightness = event.target.valueAsNumber;
-    console.log(event.target.valueAsNumber);
-    console.log(this.lights);
+    // console.log(event.target.valueAsNumber);
+    // console.log(this.lights);
+    this.lightservice.updateLights(this.areaName, this.lights)
+    this.userService.updateUser(this.lightservice.areaStorage)
   }
 
   // set brightness of lights from its assigned slider value

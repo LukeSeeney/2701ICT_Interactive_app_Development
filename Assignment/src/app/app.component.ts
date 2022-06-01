@@ -17,9 +17,9 @@ export class AppComponent {
   async initialise(){
     if (await this.storage.get("users") == null){
       await this.storage.set("users", [
-        {username:"asd", password:"asd", areas:[new Area("Home")]}, 
-        {username:"admin", password:"admin",areas:[new Area("Home")
-      ]}]);
+        {username:"asd", password:"asd", areas:[new Area("Home")], schedule:[]}, 
+        {username:"admin", password:"admin",areas:[new Area("Home")], schedule:[]}
+      ]);
     }
   }
 }

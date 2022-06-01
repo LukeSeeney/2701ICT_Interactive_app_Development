@@ -17,7 +17,6 @@ export class DateCheckerService
       // constantly setting current date and time to system time
       this.dateRefresh = (new Date()).toISOString();
       this.currentDate = this.dateRefresh;
-      
   };
 
   // importing area target from scheduling modal
