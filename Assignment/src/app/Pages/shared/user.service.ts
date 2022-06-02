@@ -13,6 +13,9 @@ export class UserService {
   // user data storage
   userData:any;
 
+  // user scheduling storage
+  schedule:any
+
   // user storage
   users:any;
   constructor(private storageService:StorageService) { 
@@ -33,6 +36,7 @@ export class UserService {
     for(let user of this.users){
       if(this.username == user.username && this.password == user.password){
         this.userData = user.areas;
+        this.schedule = user.schedule;
         return true;
       }
     } 
@@ -45,7 +49,15 @@ export class UserService {
         user.areas = areaStorage;
       }
     }
-    console.log("stuff happened")
+    this.storageService.store("users", this.users)
+  }
+
+  updateSchedule(schedule:any){
+    for(let user of this.users){
+      if(this.username == user.username && this.password == user.password){
+        this.users.schedule = schedule;
+      }
+    }
     this.storageService.store("users", this.users)
   }
 

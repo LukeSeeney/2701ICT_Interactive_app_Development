@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,12 @@ export class DateCheckerService
   areaName:string
   // events imported from scheduling modal
   scheduledEvents = []
-  constructor() 
+  constructor(private userService:UserService) 
   {
-      // constantly setting current date and time to system time
-      this.dateRefresh = (new Date()).toISOString();
-      this.currentDate = this.dateRefresh;
+    this.scheduledEvents = this.userService.schedule;
+    // constantly setting current date and time to system time
+    this.dateRefresh = (new Date()).toISOString();
+    this.currentDate = this.dateRefresh;
   };
 
   // importing area target from scheduling modal

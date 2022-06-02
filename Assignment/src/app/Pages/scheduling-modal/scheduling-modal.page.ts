@@ -4,6 +4,7 @@ import { Area } from 'src/app/light';
 import { Event } from 'src/app/event';
 import { DateCheckerService } from '../shared/date-checker.service';
 import { SchedulingPage } from '../scheduling/scheduling.page';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-scheduling-modal',
@@ -20,7 +21,7 @@ export class SchedulingModalPage implements OnInit {
   areaName:string
   // state to set area to
   state = false;
-  constructor(public modalctrl: ModalController, private dateChecker:DateCheckerService) {  }
+  constructor(public modalctrl: ModalController, private dateChecker:DateCheckerService, private userService: UserService) {  }
 
   // retrieve event target from modal trigger button
   ngOnInit() {
@@ -41,6 +42,7 @@ export class SchedulingModalPage implements OnInit {
        this.dateChecker.scheduledEvents.push(this.scheduledEvents[i])
      }
      console.log(this.dateChecker.scheduledEvents);
+     this.userService.updateSchedule(this.dateChecker.scheduledEvents)
      this.modalctrl.dismiss();  
   }  
 }
