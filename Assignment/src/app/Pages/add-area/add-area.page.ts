@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Area } from 'src/app/light';
 import { LightStatusService } from '../shared/light-status.service';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-add-area',
@@ -10,7 +11,7 @@ import { LightStatusService } from '../shared/light-status.service';
 })
 export class AddAreaPage implements OnInit { 
   
-  constructor(public modalctrl: ModalController, private lightservice:LightStatusService) {}  
+  constructor(public modalctrl: ModalController, private lightservice:LightStatusService, private userService: UserService) {}  
 
   areaName:string;
 
@@ -24,6 +25,7 @@ export class AddAreaPage implements OnInit {
       this.modalctrl.dismiss(); 
     }
     this.lightservice.areaStorage.push(new Area(this.areaName));
+    this.userService.updateUser(this.lightservice.areaStorage)
     this.modalctrl.dismiss();  
   }  
 }  

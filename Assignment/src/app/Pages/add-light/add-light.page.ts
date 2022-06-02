@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { LightStatusService } from '../shared/light-status.service';
 import { Area, Light } from 'src/app/light';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-add-light',
@@ -10,7 +11,8 @@ import { Area, Light } from 'src/app/light';
 })
 export class AddLightPage implements OnInit {
 
-  constructor(public modalctrl: ModalController, private lightservice:LightStatusService) { }
+  constructor(public modalctrl: ModalController, private lightservice:LightStatusService, 
+              private userService: UserService) { }
 
   // variables to import the area being adited
   lightName:string
@@ -33,7 +35,9 @@ export class AddLightPage implements OnInit {
             this.lights.push(new Light(this.lightName, false, 100, this.lightWattage));
           }
         }
-    console.log(this.lights)
+    this.lightservice.updateLights(this.areaName, this.lights)
+    this.userService.updateUser(this.lightservice.areaStorage)
+    // console.log(this.lights)
     this.modalctrl.dismiss();  
   }  
 }
