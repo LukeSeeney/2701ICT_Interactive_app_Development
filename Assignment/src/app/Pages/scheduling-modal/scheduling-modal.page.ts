@@ -35,6 +35,7 @@ export class SchedulingModalPage implements OnInit {
     console.log(this.dateTimeToggle)
   }
 
+  
   // push events scheduled to scheduling page storage
   close() { 
      this.scheduledEvents.push(new Event(this.areaName, this.state ,this.dateTimeToggle))

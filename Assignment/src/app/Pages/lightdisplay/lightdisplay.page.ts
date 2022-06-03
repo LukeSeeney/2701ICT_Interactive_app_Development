@@ -24,7 +24,8 @@ export class LightdisplayPage implements OnInit {
   constructor(public modalctrl:ModalController, private lightservice:LightStatusService, private userService: UserService) {  }
 
   // show modal to add a light
-  async showModal() {  
+  async showModal() 
+  {  
     const modal = await this.modalctrl.create({  
       component: AddLightPage,
       breakpoints: [0, 0.5],
@@ -34,27 +35,38 @@ export class LightdisplayPage implements OnInit {
   }  
 
   // import area name and lights contained in it from light service
-  ngOnInit() {
+  ngOnInit() 
+  {
     this.areaName = this.lightservice.areaName;
     this.lights = this.lightservice.getLightsInArea(this.areaName);
   }
 
-  checkboxEvent(){
-    this.lightservice.updateLights(this.areaName, this.lights)
-    this.userService.updateUser(this.lightservice.areaStorage)
+  checkboxEvent(light:any, powerstate: boolean)
+  {
+    console.log(light);
+    if(powerstate == true)
+    {
+      console.log(powerstate);
+    }
+    this.lightservice.updateLights(this.areaName, this.lights);
+    this.userService.updateUser(this.lightservice.areaStorage);
   }
+
   // retrieve value of individual sliders
-  getSliderValue(event:any = 0){
+  getSliderValue(event:any = 0)
+  {
     this.sliderBrightness = event.target.valueAsNumber;
     // console.log(event.target.valueAsNumber);
     // console.log(this.lights);
-    this.lightservice.updateLights(this.areaName, this.lights)
-    this.userService.updateUser(this.lightservice.areaStorage)
+    this.lightservice.updateLights(this.areaName, this.lights);
+    this.userService.updateUser(this.lightservice.areaStorage);
   }
 
   // set brightness of lights from its assigned slider value
-  ngAfterViewInit(){
-    for(let light in this.lights){
+  ngAfterViewInit()
+  {
+    for(let light in this.lights)
+    {
     var slider = this.lights[light].brightness;
     this.sliders.push(slider);
     }

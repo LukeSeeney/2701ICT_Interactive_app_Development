@@ -8,6 +8,10 @@ export class Light {
     // light wattage
     wattage:number;
 
+    // times light was turned on and off most recently
+    onTime:Date;
+    offTime:Date;
+
     constructor(lightName:string, powerState:boolean, brightness:number, wattage:number){
         this.lightName = lightName;
         this.powerState = powerState;

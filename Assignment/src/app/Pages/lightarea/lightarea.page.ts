@@ -60,7 +60,6 @@ export class LightareaPage implements OnInit {
   addArea(name:string){
     this.areas.push(new Area(name));
     this.lightservice.areaStorage = this.areas;
-
   }
 
   // toggle powerstate of light input

@@ -15,7 +15,7 @@
           <ion-label>{{light.lightName}}</ion-label>
           <ion-label position = "right" *ngIf = "light.powerState == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Off</ion-label>
           <ion-label *ngIf = "light.powerState == true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On</ion-label>
-          <ion-checkbox [(ngModel)] = "light.powerState" (ngModelChange) = "checkboxEvent()" checked = light.powerState position = "right"></ion-checkbox>
+          <ion-checkbox [(ngModel)] = "light.powerState" (ngModelChange) = "checkboxEvent(light, light.powerState)" checked = light.powerState position = "right"></ion-checkbox>
         </ion-item>
         <ion-label>Brightness</ion-label>
         <ion-item color = "secondary" lines = "none">
