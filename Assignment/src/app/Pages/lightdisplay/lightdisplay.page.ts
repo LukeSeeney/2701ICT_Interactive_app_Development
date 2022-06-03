@@ -43,10 +43,21 @@ export class LightdisplayPage implements OnInit {
 
   checkboxEvent(light:any, powerstate: boolean)
   {
-    console.log(light);
     if(powerstate == true)
     {
       console.log(powerstate);
+      light.onTime = new Date();
+      light.offTime = null;
+      console.log(light)
+    }
+    else if(powerstate == false)
+    {
+      console.log(powerstate);
+      light.offTime = new Date();
+      console.log(light)
+      light.timeOn = light.offTime.getTime() - light.onTime.getTime();
+      console.log("Time on: " + light.timeOn + "ms")
+      
     }
     this.lightservice.updateLights(this.areaName, this.lights);
     this.userService.updateUser(this.lightservice.areaStorage);

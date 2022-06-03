@@ -24,7 +24,7 @@ export class UserService {
   constructor(private storageService:StorageService) { 
     this.storageService.get("users").then((val) => {
       this.users = val;
-      console.log(this.users)
+      // console.log(this.users)
     });
   }
 

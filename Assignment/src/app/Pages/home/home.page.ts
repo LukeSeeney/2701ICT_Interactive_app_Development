@@ -31,7 +31,7 @@ export class HomePage implements OnInit {
     this.password = this.userservice.getPassword();
     this.userData = this.userservice.getUserData();
     this.powerData = this.userservice.getPowerData();
-    console.log(this.powerData)
+    // console.log(this.powerData)
     this.lightService.areaStorage = this.userData;
     // console.log(this.lightService.areaStorage)
 

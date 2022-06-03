@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Storage } from "@ionic/storage-angular"
 import { Area } from './light';
 
@@ -9,9 +10,10 @@ import { Area } from './light';
 })
 export class AppComponent {
 
-  constructor(private storage:Storage) {
+  constructor(private storage:Storage, private localNotificaitons: LocalNotifications) {
     this.storage.create();
     this.initialise();
+    this.localNotificaitons.requestPermission();
   }
 
   async initialise(){
