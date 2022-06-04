@@ -38,6 +38,10 @@ const routes: Routes = [
     path: 'scheduling-modal',
     loadChildren: () => import('./pages/scheduling-modal/scheduling-modal.module').then( m => m.SchedulingModalPageModule)
   },
+  {
+    path: 'create-user',
+    loadChildren: () => import('./pages/create-user/create-user.module').then( m => m.CreateUserPageModule)
+  },
 
 
 ];

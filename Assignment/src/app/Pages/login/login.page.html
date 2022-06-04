@@ -1,40 +1,5 @@
 <ion-header translucent="true" mode = "md"></ion-header>
 
 <ion-content fullscreen="true" mode = 'md'>
-  <div class="flex-center">
-    <ion-card color = "secondary">
-      <ion-card-header>
-        <ion-card-title>Login</ion-card-title>
-        <ion-card-subtitle>Enter login details</ion-card-subtitle>
-      </ion-card-header>
-    
-      <ion-card-content  mode = "ios">
-
-        <ion-item lines = "none" size = 8 color = "secondary">
-          {{loginAttempts}} login attempts
-        </ion-item>
-
-        <ion-item color = "secondary">
-          <ion-label position="floating">Username</ion-label>
-          <ion-input type="Username" [(ngModel)]="username" name="Username"></ion-input>
-        </ion-item>
-
-        <ion-item color = "secondary">
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="password" [(ngModel)]="password" name="Password"></ion-input>
-        </ion-item>
-        
-        <ion-item color = "secondary" size = "cover">
-          <ion-checkbox></ion-checkbox>
-          <ion-label>Remain logged in</ion-label>
-        </ion-item>
-
-        <ion-button (click) = "login()" shape = "round" color = "success" size = "full">
-          LOGIN
-          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
-        </ion-button>     
-  
-      </ion-card-content>
-    </ion-card>
-  </div>
+  <app-registry [loginType] = "true"></app-registry>
 </ion-content>
