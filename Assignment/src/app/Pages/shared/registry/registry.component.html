@@ -1,0 +1,72 @@
+  <div class="flex-center">
+    <ion-card color = "secondary">
+      <ion-card-header *ngIf="loginType == true">
+        <ion-card-title>Login</ion-card-title>
+        <ion-card-subtitle>Enter login details</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-header *ngIf="loginType == false">
+        <ion-card-title>Register</ion-card-title>
+        <ion-card-subtitle>Create Account Details</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content  mode = "ios">
+        <ion-item *ngIf = "loginType == true" lines = "none" size = 8 color = "secondary">
+          {{loginAttempts}} login attempts
+        </ion-item>
+        <ion-item *ngIf = "usernameTaken == true" lines = "none" size = 8 color = "secondary">
+          <ion-text color = "danger">
+            Username Taken
+          </ion-text>
+        </ion-item>
+
+        <ion-item *ngIf = "invalidUsername == true" lines = "none" size = 8 color = "secondary">
+          <ion-text color = "danger">
+            Invalid Username
+          </ion-text>
+        </ion-item>
+
+        <ion-item *ngIf = "invalidPassword == true" lines = "none" size = 8 color = "secondary">
+          <ion-text color = "danger">
+            Invalid Password
+          </ion-text>
+        </ion-item>
+
+        <ion-item color = "secondary">
+          <ion-label position="floating">Username</ion-label>
+          <ion-input type="Username" [(ngModel)]="username" name="Username"></ion-input>
+        </ion-item>
+
+        <ion-item color = "secondary">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input type="password" [(ngModel)] = "password" name = "Password"></ion-input>
+        </ion-item>
+        
+        <ion-item *ngIf = "loginType == true" color = "secondary" size = "cover">
+          <ion-checkbox></ion-checkbox>
+          <ion-label>Remain logged in</ion-label>
+        </ion-item>
+
+        <ion-button *ngIf = "loginType == true" (click) = "login()" shape = "round" color = "success" size = "full">
+          LOGIN
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        </ion-button>
+        
+        <ion-button *ngIf = "loginType == true" (click) = "register()" shape = "round" color = "secondary" size = "full">
+          REGISTER
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        </ion-button> 
+
+        <ion-button *ngIf = "loginType == false" (click) = "newUser()" shape = "round" color = "secondary" size = "full">
+          REGISTER
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        </ion-button> 
+
+        <ion-button *ngIf = "loginType == false" (click) = "cancel()" shape = "round" color = "secondary" size = "full">
+          CANCEL
+          <ion-icon name="arrow-forward-circle-outline"></ion-icon>
+        </ion-button> 
+      </ion-card-content>
+    </ion-card>
+  </div>
+
