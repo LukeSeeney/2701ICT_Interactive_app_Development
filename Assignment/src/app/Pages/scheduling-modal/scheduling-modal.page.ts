@@ -5,7 +5,6 @@ import { Event } from 'src/app/event';
 import { DateCheckerService } from '../shared/date-checker.service';
 import { SchedulingPage } from '../scheduling/scheduling.page';
 import { UserService } from '../shared/user.service';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-scheduling-modal',
@@ -16,14 +15,14 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 export class SchedulingModalPage implements OnInit 
 {
   // date and time of schedule
-  dateTimeToggle= new Date();
+  dateTimeToggle= new Date().toISOString();
    // scheduled event storage
   scheduledEvents = [];
   // event target from modal trigger button
   areaName:string
   // state to set area to
   state = false;
-  constructor(public modalctrl: ModalController,private localNotifications: LocalNotifications, private dateChecker:DateCheckerService, private userService: UserService) {  }
+  constructor(public modalctrl: ModalController, private dateChecker:DateCheckerService, private userService: UserService) {  }
 
   // retrieve event target from modal trigger button
   ngOnInit() 
@@ -32,7 +31,7 @@ export class SchedulingModalPage implements OnInit
   }
 
   // set time of event
-  setOnTime(dateTime:Date)
+  setOnTime(dateTime:string)
   {
     console.log(dateTime)
     this.dateTimeToggle = dateTime;
@@ -43,15 +42,8 @@ export class SchedulingModalPage implements OnInit
   // push events scheduled to scheduling page storage and use scheduling plugin to perform the scheduled event
   close() 
   { 
-    // schedule notification plugin with function
-    this.localNotifications.schedule([
-    {
-      title:"Scheduled Light toggle",
-      trigger: {at: this.dateTimeToggle},
-      foreground: true
-    }]);
     // add scheduled event to data to for scheduling page to display
-    this.scheduledEvents.push(new Event(this.areaName, this.state ,this.dateTimeToggle))
+    this.scheduledEvents.push(new Event(this.areaName, this.state , new Date(this.dateTimeToggle)))
     for(let i in this.scheduledEvents){
       this.dateChecker.scheduledEvents.push(this.scheduledEvents[i])
     }

@@ -47,3 +47,11 @@ export class Area
         this.lights = [];
     }
 }
+// daily power storage
+export class DailyPower
+{
+    date: Date;
+
+    powerUsed:any;
+    
+}

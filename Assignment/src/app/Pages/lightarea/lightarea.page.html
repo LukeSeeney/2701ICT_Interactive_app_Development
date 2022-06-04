@@ -19,7 +19,7 @@
       <ion-button (click)="navToLights(area.areaName)" color = "primary" shape = "round" size = "full">Open {{area.areaName}}</ion-button>
       <ion-item color = "secondary" lines = "none">
         <ion-button (click) = "showScheduleModal(area.areaName)" color = "tertiary" shape = "round" size = "small">Schedule on/off</ion-button>
-        <ion-button slot="end"  size = "small" color = "danger">
+        <ion-button (click) = "removeArea(area.areaName)" slot="end"  size = "small" color = "danger">
           <ion-icon size = "medium" name="trash-outline"></ion-icon>
         </ion-button>
       </ion-item>

@@ -48,6 +48,16 @@ export class LightareaPage implements OnInit {
   // retrieve areas from light service
   ngOnInit() {
     this.areas = this.lightservice.getAreas()
+    this.dateCheckerService.ob.subscribe((result) => {
+      let areaToChange:any
+      for(let i in this.areas){
+        if(this.areas[i].areaName == result.area){
+          areaToChange = this.areas[i];
+          this.powerStateToggle(areaToChange, result.state);
+        }
+      }
+    }
+  );
   }
 
   // navigate to lights page, pass over area selected
@@ -61,11 +71,20 @@ export class LightareaPage implements OnInit {
     this.areas.push(new Area(name));
     this.lightservice.areaStorage = this.areas;
   }
+  
+  // remove area upon remove button being clicked
+  removeArea(area:string){
+    console.log("remove area")
+    
+  }
 
   // toggle powerstate of light input
   powerStateToggle(area:any,state:boolean){
     for(let e in this.areas){
       if(this.areas[e] == area){
+        if(this.areas[e].switch != state){
+          this.areas[e].switch = state;
+        }
         for(let i in this.areas[e].lights){
           // change power state for relevant lights in area
           this.areas[e].lights[i].powerState = state;
@@ -76,4 +95,5 @@ export class LightareaPage implements OnInit {
     }
     this.userService.updateUser(this.lightservice.areaStorage)
   }
+
 }
