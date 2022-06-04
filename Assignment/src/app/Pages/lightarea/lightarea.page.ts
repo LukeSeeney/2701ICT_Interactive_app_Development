@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { Area, Light } from 'src/app/light';
+import { Area, DailyPower, Light } from 'src/app/light';
 import { AddAreaPage } from '../add-area/add-area.page';
 import { SchedulingModalPage } from '../scheduling-modal/scheduling-modal.page';
 import { DateCheckerService } from '../shared/date-checker.service';
@@ -89,8 +89,10 @@ export class LightareaPage implements OnInit {
       {
         this.areas.splice(this.areas.indexOf(this.areas[i]), 1);
         // console.log(this.areas)
+        this.lightservice.areaStorage = this.areas;
       }
     }
+    this.userService.updateUser(this.lightservice.areaStorage)
   }
 
   // toggle powerstate of light input
@@ -116,7 +118,14 @@ export class LightareaPage implements OnInit {
             this.areas[e].lights[i].offTime = new Date();
             console.log(this.areas[e].lights[i])
             this.areas[e].lights[i].timeOn = this.areas[e].lights[i].offTime.getTime() - this.areas[e].lights[i].onTime.getTime();
-            console.log("Time on: " + this.areas[e].lights[i].timeOn + "ms")
+            console.log("Time on: " + this.areas[e].lights[i].timeOn + "ms");
+            this.areas[e].lights[i].dailyPower.push(
+              new DailyPower(this.areas[e].lights[i].onTime, this.areas[e].lights[i].offTime, this.areas[e].lights[i].wattage)
+            );
+            this.areas[e].dailyPower.push(this.areas[e].lights[i].dailyPower)
+            console.log(this.areas[e].dailyPower)
+            
+            // add power consumed to each day
           }
         }
         // pass back power state that has now been changed

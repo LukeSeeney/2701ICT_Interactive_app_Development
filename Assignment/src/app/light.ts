@@ -12,6 +12,9 @@ export class Light
     // times light was turned on and off most recently
     onTime:Date;
     offTime:Date;   
+
+    // daily power usage for graph
+    dailyPower = [];
     
     // total time light was on most recently
     timeOn:any;
@@ -36,9 +39,7 @@ export class Area
 
     // graph date and power usage storage
     dailyPower = [];
-    //store dates of last 7 days
-    //if day of power consumption spills over to another day calculate power consumed for each day of event
-    // add power consumed to each day
+    
 
     constructor(areaName:string) 
     {
@@ -50,8 +51,14 @@ export class Area
 // daily power storage
 export class DailyPower
 {
-    date: Date;
+    startDate: Date;
+    endDate: Date;
 
-    powerUsed:any;
-    
+    powerUsage:any;
+
+    constructor(startDate: Date, endDate: Date, powerUsage: number){
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.powerUsage = powerUsage;
+    }
 }

@@ -1,7 +1,7 @@
 <ion-header mode = 'md'>
   <ion-toolbar color = "success">
     <ion-back-button slot ="start"></ion-back-button>
-  <ion-title>Account</ion-title>
+  <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -9,7 +9,7 @@
   <ion-card color = "secondary">
     <ion-card-content color = "secondary" mode = "ios">
         <ion-item color = "secondary" lines = "none" size = "full">
-          <ion-label>Welcome {{username}}</ion-label>
+          <ion-title class="ion-no-padding">Welcome {{username}}</ion-title>
         </ion-item>
         <ion-button (click)="navToScheduling()" color = "danger" shape = "round" size = "full"> Scheduling</ion-button>
         <ion-button (click)="navToAreas()" color = "primary" shape = "round" size = "full"> Areas</ion-button>
