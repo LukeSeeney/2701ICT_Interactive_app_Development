@@ -57,7 +57,6 @@ export class LightdisplayPage implements OnInit {
       console.log(light)
       light.timeOn = light.offTime.getTime() - light.onTime.getTime();
       console.log("Time on: " + light.timeOn + "ms")
-      
     }
     this.lightservice.updateLights(this.areaName, this.lights);
     this.userService.updateUser(this.lightservice.areaStorage);

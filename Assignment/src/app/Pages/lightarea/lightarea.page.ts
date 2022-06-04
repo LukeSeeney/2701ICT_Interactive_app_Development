@@ -25,8 +25,10 @@ export class LightareaPage implements OnInit {
   private userService: UserService) { }
 
   // show modal to add an area
-  async showModal(){  
-    const modal = await this.modalctrl.create({  
+  async showModal()
+  {  
+    const modal = await this.modalctrl.create
+    ({  
       component: AddAreaPage,
       breakpoints: [0, 0.5],
       initialBreakpoint: 0.5
@@ -35,8 +37,10 @@ export class LightareaPage implements OnInit {
   }  
 
   // show modal to schedule an area to turn on/off
-  async showScheduleModal(area:string){
-    const modal = await this.modalctrl.create({  
+  async showScheduleModal(area:string)
+  {
+    const modal = await this.modalctrl.create
+    ({  
       component: SchedulingModalPage,
       breakpoints: [0, 0.8],
       initialBreakpoint: 0.8
@@ -46,40 +50,52 @@ export class LightareaPage implements OnInit {
   }  
 
   // retrieve areas from light service
-  ngOnInit() {
+  ngOnInit() 
+  {
     this.areas = this.lightservice.getAreas()
     this.dateCheckerService.ob.subscribe((result) => {
       let areaToChange:any
-      for(let i in this.areas){
-        if(this.areas[i].areaName == result.area){
+      for(let i in this.areas)
+      {
+        if(this.areas[i].areaName == result.area)
+        {
           areaToChange = this.areas[i];
           this.powerStateToggle(areaToChange, result.state);
         }
       }
-    }
-  );
+    });
   }
 
   // navigate to lights page, pass over area selected
-  navToLights(areaName:string){
+  navToLights(areaName:string)
+  {
     this.router.navigate(["lightdisplay"])
     this.lightservice.areaSelected(areaName);
   }
 
   // push new area to storage
-  addArea(name:string){
+  addArea(name:string)
+  {
     this.areas.push(new Area(name));
     this.lightservice.areaStorage = this.areas;
   }
   
   // remove area upon remove button being clicked
-  removeArea(area:string){
-    console.log("remove area")
-    
+  removeArea(area:string)
+  {
+    console.log(area)
+    for(let i in this.areas){  
+      if(this.areas[i].areaName == area)
+      {
+        this.areas.splice(this.areas.indexOf(this.areas[i]), 1);
+        // console.log(this.areas)
+      }
+    }
   }
 
   // toggle powerstate of light input
-  powerStateToggle(area:any,state:boolean){
+  powerStateToggle(area:any,state:boolean)
+  {
     for(let e in this.areas){
       if(this.areas[e] == area){
         if(this.areas[e].switch != state){
@@ -87,7 +103,21 @@ export class LightareaPage implements OnInit {
         }
         for(let i in this.areas[e].lights){
           // change power state for relevant lights in area
-          this.areas[e].lights[i].powerState = state;
+          this.areas[e].lights[i].powerState = state;if(state == true)
+          {
+            console.log(state);
+            this.areas[e].lights[i].onTime = new Date();
+            this.areas[e].lights[i].offTime = null;
+            console.log(this.areas[e].lights[i])
+          }
+          else if(state == false)
+          {
+            console.log(state);
+            this.areas[e].lights[i].offTime = new Date();
+            console.log(this.areas[e].lights[i])
+            this.areas[e].lights[i].timeOn = this.areas[e].lights[i].offTime.getTime() - this.areas[e].lights[i].onTime.getTime();
+            console.log("Time on: " + this.areas[e].lights[i].timeOn + "ms")
+          }
         }
         // pass back power state that has now been changed
         this.lightservice.areaStorage = this.areas;

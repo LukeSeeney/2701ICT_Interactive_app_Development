@@ -33,12 +33,13 @@ export class DateCheckerService
   {
     for(let i in this.scheduledEvents)
     {
+      // console.log(this.scheduledEvents[i])
       // time difference between scheduled times
-      this.timeDifference = this.scheduledEvents[i].time.getTime() - new  Date().getTime();
+      this.timeDifference = this.scheduledEvents[i].time.toISOString();
       // if scheduled event time has occured, perform event action and remove from scheduled events
       if(this.checkDateTime(this.timeDifference) == true){
         this.lightAreaPowerStateToggle(this.scheduledEvents[i])
-        this.scheduledEvents.splice(this.scheduledEvents[i]);
+        this.scheduledEvents.splice(this.scheduledEvents.indexOf(this.scheduledEvents[i]), 1);
       }
     }
   }
@@ -50,7 +51,8 @@ export class DateCheckerService
   // function to check if scheduled event time has been triggered
   checkDateTime(dateTime:any)
   {
-    if(dateTime <= 0){
+    this.currentDate = new Date().toISOString();
+    if(dateTime < this.currentDate){
       return true;
     }
     else{
