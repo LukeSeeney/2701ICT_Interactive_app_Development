@@ -8,13 +8,13 @@
 
 <ion-content mode = "ios">
   <ion-title *ngIf="areas.length == 0" size = "full" class="ion-no-padding"> No Areas to display</ion-title>
-  <ion-card *ngFor="let area of areas" size = "full" color = "secondary">
+  <ion-card *ngFor="let area of areas" size = "full" color = "secondary" class = "ion-no-padding">
     <ion-card-content>
-      <ion-item lines = "none" color = "secondary" size = "full">
-        <ion-label size = "full">{{area.areaName}}</ion-label>
-        <ion-label *ngIf = "area.switch == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Off</ion-label>
-        <ion-label *ngIf = "area.switch == true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On</ion-label>
-        <ion-checkbox [(ngModel)] = "area.switch" (ngModelChange) = "powerStateToggle(area,area.switch)" checked = area.switch (oninput)="powerStateToggle(area, area.switch)"></ion-checkbox>
+      <ion-item lines = "none" color = "secondary">
+        <ion-label class = "ion-no-padding">{{area.areaName}}</ion-label>
+        <ion-label class = "ion-no-padding" *ngIf = "area.switch == false">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Off</ion-label>
+        <ion-label class = "ion-no-padding" *ngIf = "area.switch == true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; On</ion-label>
+        <ion-checkbox class = "ion-no-padding" [(ngModel)] = "area.switch" (ngModelChange) = "powerStateToggle(area,area.switch)" checked = area.switch (oninput)="powerStateToggle(area, area.switch)"></ion-checkbox>
       </ion-item>
       <ion-button (click)="navToLights(area.areaName)" color = "primary" shape = "round" size = "full">Open {{area.areaName}}</ion-button>
       <ion-item color = "secondary" lines = "none">

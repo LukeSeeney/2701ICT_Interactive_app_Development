@@ -120,12 +120,8 @@ export class LightareaPage implements OnInit {
             this.areas[e].lights[i].timeOn = this.areas[e].lights[i].offTime.getTime() - this.areas[e].lights[i].onTime.getTime();
             console.log("Time on: " + this.areas[e].lights[i].timeOn + "ms");
             this.areas[e].lights[i].dailyPower.push(
-              new DailyPower(this.areas[e].lights[i].onTime, this.areas[e].lights[i].offTime, this.areas[e].lights[i].wattage)
+              new DailyPower(this.areas[e].lights[i].onTime, this.areas[e].lights[i].timeOn, this.areas[e].lights[i].wattage)
             );
-            this.areas[e].dailyPower.push(this.areas[e].lights[i].dailyPower)
-            console.log(this.areas[e].dailyPower)
-            
-            // add power consumed to each day
           }
         }
         // pass back power state that has now been changed

@@ -37,10 +37,6 @@ export class Area
     // lights stored in the area
     lights = [];
 
-    // graph date and power usage storage
-    dailyPower = [];
-    
-
     constructor(areaName:string) 
     {
         this.areaName = areaName;
@@ -52,13 +48,13 @@ export class Area
 export class DailyPower
 {
     startDate: Date;
-    endDate: Date;
+    timeOn:string;
 
     powerUsage:any;
 
-    constructor(startDate: Date, endDate: Date, powerUsage: number){
+    constructor(startDate: Date, timeOn: string, wattage: number){
         this.startDate = startDate;
-        this.endDate = endDate;
-        this.powerUsage = powerUsage;
+        this.timeOn = timeOn;
+        this.powerUsage = ((parseInt(timeOn) / 1000 / 60 / 60 ) * wattage) / 1000;
     }
 }

@@ -41,6 +41,8 @@ export class LightdisplayPage implements OnInit {
     this.lights = this.lightservice.getLightsInArea(this.areaName);
   }
 
+  // toggle data depending on if light is on or off
+  // calculate power consumption and save to storage
   checkboxEvent(light:any, powerstate: boolean)
   {
     if(powerstate == true)
@@ -57,7 +59,7 @@ export class LightdisplayPage implements OnInit {
       console.log(light)
       light.timeOn = light.offTime.getTime() - light.onTime.getTime();
       console.log("Time on: " + light.timeOn + "ms")
-      light.dailyPower.push(new DailyPower(light.onTime, light.offTime, light.wattage));
+      light.dailyPower.push(new DailyPower(light.onTime, light.timeOn, light.wattage));
     }
     this.lightservice.updateLights(this.areaName, this.lights);
     this.userService.updateUser(this.lightservice.areaStorage);

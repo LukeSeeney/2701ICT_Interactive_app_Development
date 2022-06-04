@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LightStatusService } from '../shared/light-status.service';
 import { UserService } from '../shared/user.service';
 import {Chart } from 'chart.js'
+import { range } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,13 @@ export class HomePage implements OnInit {
   // chart
   @ViewChild('powerChart', {static:true}) canvas;
   chart:any
+  // chart data
+  chartDates = []
 
   // saved user data
   username:string;
   password:string;
-  powerData:any;
+  powerData = [0, 0, 0, 0, 0, 0, 0];
   userData:any;
 
   constructor(private userservice: UserService, private lightService: LightStatusService,
@@ -30,18 +33,41 @@ export class HomePage implements OnInit {
     this.username = this.userservice.getUsername();
     this.password = this.userservice.getPassword();
     this.userData = this.userservice.getUserData();
-    this.powerData = this.userservice.getPowerData();
-    // console.log(this.powerData)
     this.lightService.areaStorage = this.userData;
+
+     // get the last 7 days to display on the chart
+     for(let i = 0; i < 7; i++)
+     {
+        var d = new Date();
+        d.setDate(d.getDate() - i);
+        this.chartDates.push(d)
+     }
+     for(let i in this.chartDates){
+        for(let j in this.userData){
+          // console.log(this.userData[j])
+          for(let k in this.userData[j].lights){
+            //  console.log(this.userData[j].lights[k].dailyPower)
+            for(let l in this.userData[j].lights[k].dailyPower){
+              if(this.userData[j].lights[k].dailyPower[l].startDate.toDateString() === this.chartDates[i].toDateString()){
+                this.powerData[i] += this.userData[j].lights[k].dailyPower[l].powerUsage;
+                console.log(this.userData[j].lights[k].dailyPower[l].powerUsage)
+              }
+            }
+          }
+        }
+     }
+    // console.log(this.powerData)
+    
     // console.log(this.lightService.areaStorage)
 
-    // chart details
+    // chart
+    Chart.defaults.global.defaultFontColor = "#ffffff";
     this.chart = new Chart(this.canvas.nativeElement,
     {
-      type: 'bar',
+      type: 'line',
       data:
       {
-        labels:[1,2,3,4,5,6,7,8],
+        labels: this.chartDates,
         datasets: [
         {
           data: this.powerData,
@@ -56,8 +82,33 @@ export class HomePage implements OnInit {
       {
         scales:
         {
+          xAxes:[
+          {
+            scaleLabel: {
+              display: true,
+              labelString: 'last 7 days'
+            },
+            display:true,
+            type: "time",
+            time:
+            {
+              parser: 'DD/MM/YYYY HH:mm',
+              tooltipFormat: 'll HH:mm',
+              unit: 'day',
+              unitStepSize: 1,
+              displayFormats: 
+              {
+                'day': 'DD/MM/YYYY'
+              }
+            }
+          }],
           yAxes: [
           {
+            scaleLabel: {
+              display: true,
+              labelString: 'Power Used (KW/h)'
+            },
+            display: true,
             ticks:
             {
               beginAtZero: true

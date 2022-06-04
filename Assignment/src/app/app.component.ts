@@ -18,8 +18,8 @@ export class AppComponent {
   async initialise(){
     if (await this.storage.get("users") == null){
       await this.storage.set("users", [
-        {username:"asd", password:"asd", areas:[new Area("Home")], schedule:[], powerData:[20, 40, 60, 80, 100, 120, 140, 160]}, 
-        {username:"admin", password:"admin",areas:[new Area("Home")], schedule:[], powerData:[20, 40, 60, 80, 100, 120, 140, 160]}
+        {username:"asd", password:"asd", areas:[new Area("Home")], schedule:[]}, 
+        {username:"admin", password:"admin",areas:[new Area("Home")], schedule:[]}
       ]);
     }
   }

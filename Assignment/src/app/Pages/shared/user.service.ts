@@ -16,7 +16,7 @@ export class UserService {
   // user scheduling storage
   schedule:any
 
-  // user power consumprion storage
+  // user power consumption storage
   powerData:any
 
   // user storage
@@ -40,7 +40,6 @@ export class UserService {
       if(this.username == user.username && this.password == user.password){
         this.userData = user.areas;
         this.schedule = user.schedule;
-        this.powerData = user.powerData;
         return true;
       }
     } 
@@ -65,9 +64,7 @@ export class UserService {
     this.storageService.store("users", this.users)
   }
 
-  updatePower(){
-    
-  }
+  
 
   // send current username
   getUsername(){
