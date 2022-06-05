@@ -20,6 +20,9 @@ export class UserService {
   // user storage
   users:any;
 
+  //profile picture for current user
+  profilePic:any;
+
   private userDataSub = new Subject<any>();
   ob = this.userDataSub.asObservable();
 
@@ -46,6 +49,7 @@ export class UserService {
       if(this.username == user.username && this.password == user.password){
         this.userData = user.areas;
         this.schedule = user.schedule;
+        this.profilePic = user.profilePic;
         return true;
       }
     } 
@@ -67,7 +71,16 @@ export class UserService {
   updateSchedule(schedule:any){
     for(let user of this.users){
       if(this.username == user.username && this.password == user.password){
-        this.users.schedule = schedule;
+        user.schedule = schedule;
+      }
+    }
+    this.storageService.store("users", this.users)
+  }
+
+  updatePicture(picture:any){
+    for(let user of this.users){
+      if(this.username == user.username && this.password == user.password){
+        user.profilePic = picture;
       }
     }
     this.storageService.store("users", this.users)
@@ -86,6 +99,10 @@ export class UserService {
   // send current user's data
   getUserData(){
     return this.userData;
+  }
+
+  getProfilePic(){
+    return this.profilePic;
   }
   
 }
