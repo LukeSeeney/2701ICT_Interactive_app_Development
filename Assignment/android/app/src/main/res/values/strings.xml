@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AreaLight</string>
+    <string name="title_activity_main">AreaLight</string>
+    <string name="package_name">li.AreaLight</string>
+    <string name="custom_url_scheme">li.AreaLight</string>
+</resources>

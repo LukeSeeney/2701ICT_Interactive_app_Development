@@ -1,0 +1,6 @@
+{
+	"appId": "li.AreaLight",
+	"appName": "AreaLight",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
