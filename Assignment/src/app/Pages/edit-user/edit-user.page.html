@@ -44,7 +44,7 @@
       <ion-input type="password" [(ngModel)] = "confirmPassword" name = "Password"></ion-input>
     </ion-item>
 
-    <ion-button *ngIf = "oldPassword != password && confirmPassword == password" (click) = "login()" shape = "round" color = "success" size = "full">
+    <ion-button *ngIf = "oldPassword != password && confirmPassword == password" (click) = "changePassword()" shape = "round" color = "success" size = "full">
       Change Password
       <ion-icon name="arrow-forward-circle-outline"></ion-icon>
     </ion-button>

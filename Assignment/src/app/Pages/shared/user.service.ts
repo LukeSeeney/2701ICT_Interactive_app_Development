@@ -86,6 +86,16 @@ export class UserService {
     this.storageService.store("users", this.users)
   }
 
+  changePassword(password:string){
+    for(let user of this.users){
+      if(this.username == user.username && this.password == user.password){
+        this.password = password;
+        user.password = password;
+      }
+    }
+    this.storageService.store("users", this.users)
+  }
+
   // send current username
   getUsername(){
     return this.username;

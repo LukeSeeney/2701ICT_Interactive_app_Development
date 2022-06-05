@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../shared/user.service';
 
 @Component({
@@ -15,12 +16,13 @@ export class EditUserPage implements OnInit {
   oldPassword:string;
 
   confirmPassword:string;
+  passwordChanged:boolean = false;
 
   // profile picture
   profilePic:any;
   saved:boolean = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() 
   {
@@ -32,7 +34,8 @@ export class EditUserPage implements OnInit {
 
   changePassword()
   {
-
+    this.userService.changePassword(this.password);
+    this.router.navigate(['home'])
   }
 
   imageSelected(files:any){
