@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'Assignment',
+  appId: 'li.AreaLight',
+  appName: 'AreaLight',
   webDir: 'www',
   bundledWebRuntime: false
 };
