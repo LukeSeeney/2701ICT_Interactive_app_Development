@@ -33,9 +33,9 @@ export class SchedulingModalPage implements OnInit
   // set time of event
   setOnTime(dateTime:string)
   {
-    console.log(dateTime)
+    // console.log(dateTime)
     this.dateTimeToggle = dateTime;
-    console.log(this.dateTimeToggle)
+    // console.log(this.dateTimeToggle)
   }
 
   
@@ -47,7 +47,7 @@ export class SchedulingModalPage implements OnInit
     for(let i in this.scheduledEvents){
       this.dateChecker.scheduledEvents.push(this.scheduledEvents[i])
     }
-    console.log(this.dateChecker.scheduledEvents);
+    // console.log(this.dateChecker.scheduledEvents);
     this.userService.updateSchedule(this.dateChecker.scheduledEvents)
     this.modalctrl.dismiss();  
   }  

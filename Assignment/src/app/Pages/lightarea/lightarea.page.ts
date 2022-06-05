@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 import { Area, DailyPower, Light } from 'src/app/light';
 import { AddAreaPage } from '../add-area/add-area.page';
 import { SchedulingModalPage } from '../scheduling-modal/scheduling-modal.page';
@@ -49,6 +50,9 @@ export class LightareaPage implements OnInit {
     return await modal.present();  
   }  
 
+  updateHomeUserData() {
+    this.userService.updateHomeUserData(this.areas);
+  }
   // retrieve areas from light service
   ngOnInit() 
   {
@@ -107,18 +111,18 @@ export class LightareaPage implements OnInit {
           // change power state for relevant lights in area
           this.areas[e].lights[i].powerState = state;if(state == true)
           {
-            console.log(state);
+            // console.log(state);
             this.areas[e].lights[i].onTime = new Date();
             this.areas[e].lights[i].offTime = null;
-            console.log(this.areas[e].lights[i])
+            // console.log(this.areas[e].lights[i])
           }
           else if(state == false)
           {
-            console.log(state);
+            // console.log(state);
             this.areas[e].lights[i].offTime = new Date();
-            console.log(this.areas[e].lights[i])
+            // console.log(this.areas[e].lights[i])
             this.areas[e].lights[i].timeOn = this.areas[e].lights[i].offTime.getTime() - this.areas[e].lights[i].onTime.getTime();
-            console.log("Time on: " + this.areas[e].lights[i].timeOn + "ms");
+            // console.log("Time on: " + this.areas[e].lights[i].timeOn + "ms");
             this.areas[e].lights[i].dailyPower.push(
               new DailyPower(this.areas[e].lights[i].onTime, this.areas[e].lights[i].timeOn, this.areas[e].lights[i].wattage)
             );

@@ -24,25 +24,39 @@ export class HomePage implements OnInit {
   powerData = [0, 0, 0, 0, 0, 0, 0];
   userData:any;
 
-  constructor(private userservice: UserService, private lightService: LightStatusService,
+  constructor(private userService: UserService, private lightService: LightStatusService,
               private router: Router, private route: ActivatedRoute) {}
   
   // import username and password from user service
   ngOnInit()
    {
-    this.username = this.userservice.getUsername();
-    this.password = this.userservice.getPassword();
-    this.userData = this.userservice.getUserData();
+    this.username = this.userService.getUsername();
+    this.password = this.userService.getPassword();
+    this.userData = this.userService.userData;
     this.lightService.areaStorage = this.userData;
+    this.userService.ob.subscribe((result) => {this.updateUserData(result)});
+    this.chartFn();
+  }
 
-     // get the last 7 days to display on the chart
-     for(let i = 0; i < 7; i++)
-     {
+  // update chart if called again
+  updateUserData(value:any){
+    this.userData = value;
+    console.log(this.userData)
+    this.chartFn();
+  }
+
+  chartFn(){
+    // reset default data
+    this.powerData = [0, 0, 0, 0, 0, 0, 0];
+    this.chartDates = [];
+    // get the last 7 days to display on the chart
+    for(let i = 0; i < 7; i++)
+    {
         var d = new Date();
         d.setDate(d.getDate() - i);
         this.chartDates.push(d)
-     }
-     for(let i in this.chartDates){
+    }
+    for(let i in this.chartDates){
         for(let j in this.userData){
           // console.log(this.userData[j])
           for(let k in this.userData[j].lights){
@@ -50,12 +64,12 @@ export class HomePage implements OnInit {
             for(let l in this.userData[j].lights[k].dailyPower){
               if(this.userData[j].lights[k].dailyPower[l].startDate.toDateString() === this.chartDates[i].toDateString()){
                 this.powerData[i] += this.userData[j].lights[k].dailyPower[l].powerUsage;
-                console.log(this.userData[j].lights[k].dailyPower[l].powerUsage)
+                //  console.log(this.userData[j].lights[k].dailyPower[l].powerUsage)
               }
             }
           }
         }
-     }
+    }
     // console.log(this.powerData)
     
     // console.log(this.lightService.areaStorage)
@@ -80,6 +94,7 @@ export class HomePage implements OnInit {
       },
       options:
       {
+        
         scales:
         {
           xAxes:[
@@ -104,6 +119,7 @@ export class HomePage implements OnInit {
           }],
           yAxes: [
           {
+            responsive: false,
             scaleLabel: {
               display: true,
               labelString: 'Power Used (KW/h)'
@@ -123,6 +139,11 @@ export class HomePage implements OnInit {
   navToScheduling(){
     this.router.navigate(["scheduling"])
   }
+
+  navToEditUser(){
+    this.router.navigate(["edit-user"])
+  }
+
   // navigate to areas
   navToAreas(){
     this.router.navigate(["lightarea"])

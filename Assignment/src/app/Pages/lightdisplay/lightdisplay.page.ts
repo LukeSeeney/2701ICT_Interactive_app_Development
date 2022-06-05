@@ -47,18 +47,18 @@ export class LightdisplayPage implements OnInit {
   {
     if(powerstate == true)
     {
-      console.log(powerstate);
+      // console.log(powerstate);
       light.onTime = new Date();
       light.offTime = null;
-      console.log(light)
+      // console.log(light)
     }
     else if(powerstate == false)
     {
-      console.log(powerstate);
+      // console.log(powerstate);
       light.offTime = new Date();
-      console.log(light)
+      // console.log(light)
       light.timeOn = light.offTime.getTime() - light.onTime.getTime();
-      console.log("Time on: " + light.timeOn + "ms")
+      // console.log("Time on: " + light.timeOn + "ms")
       light.dailyPower.push(new DailyPower(light.onTime, light.timeOn, light.wattage));
     }
     this.lightservice.updateLights(this.areaName, this.lights);

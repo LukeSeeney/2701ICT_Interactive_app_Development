@@ -21,7 +21,6 @@ export class AddAreaPage implements OnInit {
   // upon pressing create button, push a new area with name in input field
   close() { 
     if(this.areaName == ""){ 
-      console.log("butts")
       this.modalctrl.dismiss(); 
     }
     this.lightservice.areaStorage.push(new Area(this.areaName));

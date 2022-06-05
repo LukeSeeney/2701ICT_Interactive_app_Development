@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'create-user',
     loadChildren: () => import('./pages/create-user/create-user.module').then( m => m.CreateUserPageModule)
   },
+  {
+    path: 'edit-user',
+    loadChildren: () => import('./pages/edit-user/edit-user.module').then( m => m.EditUserPageModule)
+  },
 
 
 ];

@@ -28,8 +28,8 @@ export class SchedulingPage implements OnInit {
   
   // set time of event
   setOnTime(dateTime:string){
-    console.log(dateTime)
+    // console.log(dateTime)
     this.dateTimeToggle = dateTime;
-    console.log(this.dateTimeToggle)
+    // console.log(this.dateTimeToggle)
   }
 }

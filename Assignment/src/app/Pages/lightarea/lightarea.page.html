@@ -1,14 +1,14 @@
 <ion-header mode = "md">
   <ion-toolbar color = "success">
-    <ion-back-button slot ="start"></ion-back-button>
+    <ion-back-button slot ="start" (click) = "updateHomeUserData()"></ion-back-button>
     <ion-title size = "cover">Areas</ion-title>
     <ion-button slot = "end" color = "secondary" lines = "none" (click) = "showModal()"> Add Area</ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content mode = "ios">
-  <ion-title *ngIf="areas.length == 0" size = "full" class="ion-no-padding"> No Areas to display</ion-title>
-  <ion-card *ngFor="let area of areas" size = "full" color = "secondary" class = "ion-no-padding">
+  <ion-title *ngIf = "areas.length == 0" size = "full" class="ion-no-padding"> No Areas to display</ion-title>
+  <ion-card *ngFor = "let area of areas" size = "full" color = "secondary" class = "ion-no-padding">
     <ion-card-content>
       <ion-item lines = "none" color = "secondary">
         <ion-label class = "ion-no-padding">{{area.areaName}}</ion-label>
